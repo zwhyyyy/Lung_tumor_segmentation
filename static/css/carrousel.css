@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+img {
+    border: 0;
+    vertical-align: top;
+}
+
+#wrap {
+    width: 1200px;
+    margin: 100px auto;
+}
+
+#slide {
+    height: 500px;
+    position: relative;
+}
+
+#slide li {
+    position: absolute;
+    left: 200px;
+    top: 0;
+}
+
+#slide li img {
+    width: 100%;
+}
+
+#arrow{
+position: absolute;
+}
+
+#arrow {
+     opacity: 0;
+     position: absolute;
+     top: 50%;
+     z-index: 1000;
+     width: 100%;
+ }
+.prev, .next {
+    width: 76px;
+    height: 112px;
+    position: absolute;
+    z-index: 99;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}

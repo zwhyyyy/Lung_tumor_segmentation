@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title></title>
+    <style>
+
+
+
+  p {
+        /* 段落居中对齐 */
+            font-family: Arial, sans-serif; /* 使用Arial字体 */
+            font-size: 20px; /* 字体大小 */
+            line-height: 1.6; /* 行高 */
+            color: #333; /* 字体颜色 */
+            margin-bottom: 20px; /* 底部留白 */
+        }
+
+        /* 添加缩进 */
+        .indented {
+            text-indent: 2em; /* 缩进2个em单位 */
+        }
+/* #donateButton {
+        padding: 10px 20px;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    } */
+
+    .donateButton {
+            display: inline-block;
+            position: absolute;
+            left: -15px;
+            top: -25px;
+            width: 120px; /* 宽度 */
+            height: 120px; /* 高度，与宽度相等以创建圆形 */
+            line-height: 100px; /* 行高与高度相等，使文本垂直居中 */
+            border-radius: 50%; /* 圆形边框 */
+            text-align: center; /* 文本居中 */
+            color: #fff; /* 文本颜色 */
+            font-size: 25px; /* 字体大小 */
+            cursor: pointer;
+            text-decoration: none; /* 移除下划线 */
+        }
+
+
+#closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#closeButton::before,
+#closeButton::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#closeButton::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#closeButton2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#closeButton2::before,
+#closeButton2::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#closeButton2::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#closeButton1 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#closeButton1::before,
+#closeButton1::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#closeButton1::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.div1{
+    position: absolute;
+    left: 30%;
+    top: 20%;
+    width: 40%;
+    height: 30%;
+    z-index: 99;
+    padding: 3%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    background-size: cover;
+}
+
+#div1{
+    background-image: url(../static/img/zhengyi.jpg);
+}
+
+#div2{
+    background-image: url(../static/img/love.jpg)
+}
+
+#label1{
+    position: absolute;
+    left: 25%;
+    bottom: 8%;
+}
+
+#button2{
+    position: absolute;
+    left: 65%;
+    bottom: 6%;
+    width: 12%;
+    height: 12%;
+    background-color: #ff69b4; /* 粉色按钮背景色 */
+    color: #fff; /* 按钮文本颜色为白色 */
+    border: none; /* 移除边框 */
+    border-radius: 8px; /* 圆角边框 */
+    font-size: 16px; /* 按钮文字大小 */
+    font-weight: bold; /* 加粗按钮文字 */
+    cursor: pointer; /* 鼠标样式为手型 */
+    /* 可根据需要添加其他按钮样式，例如阴影效果等 */
+}
+
+#button3 {
+    position: absolute;
+    left: 40%;
+    bottom: 6%;
+    width: 15%;
+    height: 15%;
+    background-color: #ff69b4; /* 粉色按钮背景色 */
+    color: #fff; /* 按钮文本颜色为白色 */
+    border: none; /* 移除边框 */
+    border-radius: 8px; /* 圆角边框 */
+    font-size: 16px; /* 按钮文字大小 */
+    font-weight: bold; /* 加粗按钮文字 */
+    cursor: pointer; /* 鼠标样式为手型 */
+    /* 可根据需要添加其他按钮样式，例如阴影效果等 */
+}
+#button4 {
+    position: absolute;
+    left: 40%;
+    bottom: 6%;
+    width: 15%;
+    height: 15%;
+    background-color: #3865e0; /* 粉色按钮背景色 */
+    color: #fff; /* 按钮文本颜色为白色 */
+    border: none; /* 移除边框 */
+    border-radius: 8px; /* 圆角边框 */
+    font-size: 16px; /* 按钮文字大小 */
+    font-weight: bold; /* 加粗按钮文字 */
+    cursor: pointer; /* 鼠标样式为手型 */
+    /* 可根据需要添加其他按钮样式，例如阴影效果等 */
+}
+
+#money {
+    position: absolute;
+    left: 40%;
+    bottom: 5%;
+    width: 20%;
+    height: 9%;
+    border: none; /* 移除边框 */
+    padding: 8px; /* 内边距 */
+    border-radius: 8px; /* 圆角边框 */
+    font-size: 16px; /* 输入框文字大小 */
+    /* 可根据需要添加其他输入框样式，例如背景色、阴影效果等 */
+}
+
+
+      #file-input {
+    display: none;
+  }
+
+  /* 自定义文件选择按钮样式 */
+  .custom-upload-button {
+    display: inline-block;
+    position: relative;
+    background-color: transparent; /* 修改为透明背景 */
+    color: rgb(10, 236, 36); /* 修改为按钮背景色 */
+    left: 25%;
+    top: 35%;
+    width: 50%;
+    height: 30%;
+    font-size: 180%;
+    border: 1px solid rgba(0, 0, 0, 0); /* 设置透明边框 */
+  border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #upload-button{
+    position: absolute;
+    left: 25%;
+    top: 35%;
+    width: 50%;
+    height: 30%;
+    background-color: transparent; /* 修改为透明背景 */
+    color: rgb(10, 236, 36); /* 修改为按钮背景色 */
+
+    font-size: 180%;
+    border: 1px solid rgba(0, 0, 0, 0); /* 设置透明边框 */
+  border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* 插入自定义内容到文件选择按钮的前面 */
+  .custom-upload-button::before {
+    content: "选择文件";
+    position: absolute;
+    color: rgb(12, 235, 42);
+            text-shadow: 0 0 10px rgb(15, 56, 220),
+            0 0 20px rgba(8, 231, 142, 0.769),
+            0 0 30px rgba(80, 220, 15, 0.769),
+            0 0 50px rgba(1, 247, 169, 0.769);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .custom-link {
+    color: #007bff; /* 设置链接文本颜色为浅蓝色 */
+    text-decoration: none; /* 去除下划线 */
+    font-weight: bold; /* 设置字体加粗 */
+    font-size: 150%;
+    transition: color 0.3s; /* 添加颜色过渡效果 */
+}
+
+.custom-link:hover {
+    color: #0dc9ea; /* 设置鼠标悬停时的链接文本颜色为深蓝色 */
+}
+
+.custom-link br {
+    display: none; /* 隐藏 <br> 元素 */
+}
+h1{ 
+            font-family: 'FangSong';
+            position: absolute;
+            left: 40%;
+            transform: translate(-40%,-50%);
+            white-space: nowrap;
+            font-size: 220%;
+            color: rgb(255, 255, 255);
+            text-shadow: 0 0 10px rgb(15, 56, 220),
+            0 0 20px rgba(0, 174, 255, 0.769),
+            0 0 30px rgba(0, 174, 255, 0.769),
+            0 0 50px rgba(0, 174, 255, 0.769);
+        }
+
+        a{ 
+            font-family: 'FangSong';
+            color: rgb(255, 255, 255);
+            text-shadow: 0 0 10px rgb(15, 56, 220),
+            0 0 20px rgba(0, 174, 255, 0.769),
+            0 0 30px rgba(0, 174, 255, 0.769),
+            0 0 50px rgba(0, 174, 255, 0.769);
+        }
+
+        a:hover {
+        color: rgb(0, 255, 179); /* 移动到链接上时颜色变为红色 */
+    }
+
+    p{ 
+            font-family: 'FangSong';
+            color: rgb(255, 255, 255);
+            text-shadow: 0 0 10px rgb(15, 56, 220),
+            0 0 20px rgba(0, 174, 255, 0.769),
+            0 0 30px rgba(0, 174, 255, 0.769),
+            0 0 50px rgba(0, 174, 255, 0.769);
+        }
+
+
+
+        *{margin:0;padding:0;}
+		.circlebox{width:300px;height:300px;/* border:1px solid #000; */margin:30px auto;
+			position: relative; animation:move 2s infinite linear;}
+		.circleblack{width:300px;height:300px;background-color:#000;border-radius:50%;}
+		.circlewhite{width:150px;height:300px;background-color: #fff;border-top-right-radius:150px;border-bottom-right-radius:150px; 
+			position:absolute;top:0;right:0;}
+		.circletop{width:150px;height:150px;border-radius:50%;background:#000;
+			position:absolute;top:0; right:75px;}
+		.circlebot{width:150px;height:150px;border-radius:50%;background:#fff;
+			position:absolute;bottom:0; right:75px;}
+		.circleon{width:75px;height:75px;border-radius:50%;background:#fff;
+			position:absolute;top:37.5px; right:100px;}
+		.circleof{width:75px;height:75px;border-radius:50%;background:#000;
+			position:absolute;bottom:37.5px; right:100px;}
+
+		/* 旋转动画 */
+		@keyframes move{
+			from{transform: rotate(0deg);}
+			to{transform:rotate(360deg); }
+		}
+
+
+        #taiji{
+            position: absolute;
+            left: 41%;
+            top: 21%;
+            z-index: 1000;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+	<div class="circlebox" id="taiji">
+		<div class="circleblack"></div>
+		<div class="circlewhite"></div>
+		<div class="circletop"></div>
+		<div class="circlebot"></div>
+		<div class="circleon"></div>
+		<div class="circleof"></div>	
+	</div>
+
+
+    <!-- 头部模块 -->
+    <div class="header">
+        <ul class="left">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="title">
+            <span><h1>智识肺癌诊疗</h1></span>
+        </div>
+        <ul class="right">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <!-- 主体模块 -->
+    <div class="main">
+        <!-- 左侧模块 -->
+        <div class="main-left">
+            <!-- 完成率 -->
+            <div class="completion">
+                <div class="completion-content">
+                    <div class="rate">
+                        <h5><a id="donateButton" class="donateButton" onclick="button1()">捐款</a></h5>
+                    </div>
+                </div>
+            </div>
+            <!-- 闪电 -->
+            <div class="lightning">
+                <div class="lightning1">
+                    <div class="sd1"></div>
+                    <div class="jd1">
+                        <ul class="cd">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <div class="box1"></div>
+                        <div class="box2"></div>
+                    </div>
+                </div>
+                <div class="lightning2">
+                    <div class="sd2"></div>
+                    <div class="jd2">
+                        <ul class="cd">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <div class="box1"></div>
+                        <div class="box2"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- top3 -->
+            
+        </div>
+        <!-- 中间模块 -->
+        <div class="main-middle">
+            <div class="external1"></div>
+            <div class="external2"></div>
+            <div class="external3"></div>
+            <div class="external4"></div>
+            <!-- 加载 -->
+            <div class="jz1">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="jz2">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <!-- 内边框 -->
+            <div class="inner1"></div>
+            <div class="inner2"></div>
+            <!-- 内加载箭头模块 -->
+            <div class="arrow-l">
+                <ol>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </div>
+            <div class="arrow-r">
+                <ol>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </div>
+            <!-- 中间仪表图 -->
+            <div class="meter"></div>
+            <!-- 中间背景canvas -->
+            <div class="animate"></div>
+            <!-- 销售额 -->
+            <div class="sale">
+                <form id="upload-form" action="/upload/" method="POST" enctype="multipart/form-data" style="width: 100%;height: 100%">
+                  <label for="file-input" class="custom-upload-button" id="label1"></label>
+                  <input name="file" type="file" id="file-input" onchange="showUploadButton()" accept=".nii">
+                  <button id="upload-button" style="display: none;" onclick="uploadFile()">上传文件</button>
+                </form>
+            </div>
+        </div>
+        <!-- 右侧模块 -->
+        <div class="main-right">
+            <!-- 开通VIP -->
+            <div class="compare">
+                <div class="compare-content">
+                    <div class="rate2">
+                        <h5><a href="#" class="donateButton" onclick="button5()">联系我们</a></h5>
+                    </div>
+                </div>
+            </div>
+            <!-- 闪电 -->
+            <div class="lightning">
+                <div class="lightning3">
+                    <div class="jd3">
+                        <ul class="cd">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <div class="box1"></div>
+                        <div class="box2"></div>
+                    </div>
+                    <div class="sd3"></div>
+                </div>
+                <div class="lightning4">
+                    <div class="jd4">
+                        <ul class="cd">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <div class="box1"></div>
+                        <div class="box2"></div>
+                    </div>
+                    <div class="sd4"></div>
+                </div>
+            </div>
+            <!-- top6 -->
+            
+        </div>
+    </div>
+    <!-- 底部模块 -->
+    <div class="bottom">
+        <div class="ul-box">
+            <ul>
+                <li>
+                    <div class="li-content">
+                        <p><a class="custom-link" href="/user_info/" id="a1">个人主页</a></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="li-content">
+                        <p><a class="custom-link" href="/history/" id="a2">诊断收藏</a></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="li-content">
+                   <p><a class="custom-link" href="/chatgpt/" id="a3">智能客服</a></p>
+                 
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="div1" id="div1">
+        <button id="closeButton">&times;</button>
+        <p style="text-align: center;">光谱行动</p>
+        <p style="text-indent: 2em;">如果你想帮助肺癌患者，可以在此进行捐款。我公司承诺所得的每一笔捐款都将落实捐赠给需要帮助的肺癌患者</p>
+        <label for="money" id="label1">捐款金额:</label>
+        <input type="text" id="money">
+        <button id="button2">确认捐款</button>
+    </div>
+    
+
+    <div class="div1" id="div2">
+        <button id="closeButton1">&times;</button>
+        <p style="text-align: center;">光谱行动</p>
+        <p style="text-indent: 2em;">感谢您的善意捐款！祝您子孙满堂，洪福齐天！</p>
+        <button id="button3">确认</button>
+    </div>
+
+    <div class="div1" id="div3" style="background-image: url(../static/img/bg.gif);">
+        <button id="closeButton2" style="color: white;">&times;</button>
+        <p style="text-align: center;">明日方舟医疗</p>
+        <p style="text-indent: 2em;">商务合作请联系加QQ:2894156079</p>
+        <button id="button4">确认</button>
+    </div>
+
+
+</body>
+<script src="../static/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
+<script src="../static/js/main.js"></script>
+
+
+<script>
+
+    
+document.addEventListener("DOMContentLoaded", function() {
+  // 确保DOM完全加载完成后再绑定事件监听器
+  document.getElementById("file-input").addEventListener("change", showUploadButton);
+
+  // 显示上传按钮的函数
+  function showUploadButton() {
+    var uploadButton = document.getElementById("upload-button");
+    uploadButton.style.display = "block"; // 当文件被选择后显示上传按钮
+  }
+
+  // 绑定点击事件到上传按钮
+  document.getElementById("upload-button").addEventListener("click", function() {
+    var div1 = document.getElementById('taiji');
+    div1.style.display = "block"; // 点击上传按钮时显示taiji容器
+  });
+});
+
+      function button5() {
+        var div1 = document.getElementById("div3");
+        if (div1.style.display === "" || div1.style.display === "none") {
+            div1.style.display = "block";
+        }
+    }
+
+    document.getElementById("closeButton2").addEventListener("click", function() {
+  var div1 = document.getElementById('div3');
+  if (div1.style.display === "block") {
+    div1.style.display = "none";
+  }
+});
+
+
+
+document.getElementById("button4").addEventListener("click", function() {
+  var div1 = document.getElementById('div3');
+  if (div1.style.display === "block") {
+    div1.style.display = "none";
+  }
+});
+</script>
+
+<script>
+      window.onload = function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            // 检查是否包含flag=1参数
+            if (urlParams.has('flag') && urlParams.get('flag') === '1') {
+                // 如果包含flag=1参数，则显示弹框
+                var div2 = document.getElementById('div2');
+                div2.style.display = "block";
+            }
+        };
+</script>
+
+<script>
+
+document.getElementById("button2").addEventListener("click", function() {
+    var money = document.getElementById('money').value; // 获取输入框中的值
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function (){
+        if(xhr.readyState === 4 && xhr.status === 200){
+            var response = JSON.parse(xhr.responseText);
+            window.location.href = response.url;     
+        }
+    }
+    xhr.open('POST', "/paycheck/", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    var data = {"money": money};
+    xhr.send(JSON.stringify(data));
+});
+
+
+document.getElementById("closeButton").addEventListener("click", function() {
+  var div1 = document.getElementById('div1');
+  if (div1.style.display === "block") {
+    div1.style.display = "none";
+  }
+});
+
+document.getElementById("closeButton1").addEventListener("click", function() {
+  var div1 = document.getElementById('div2');
+  if (div1.style.display === "block") {
+    div1.style.display = "none";
+  }
+});
+
+document.getElementById("button3").addEventListener("click", function() {
+  var div1 = document.getElementById('div2');
+  if (div1.style.display === "block") {
+    div1.style.display = "none";
+  }
+});
+</script>
+
+<script>
+    function button1() {
+        var div1 = document.getElementById("div1");
+        if (div1.style.display === "" || div1.style.display === "none") {
+            div1.style.display = "block";
+        }
+    }
+</script>
+
+<script>
+   function showUploadButton() {
+        var fileInput = document.getElementById('file-input');
+        var uploadButton = document.getElementById('upload-button');
+        var label1 = document.getElementById('label1');
+        if (fileInput.files.length > 0) {
+            fileInput.style.display = 'none';
+            label1.style.display = 'none';
+            uploadButton.style.display = 'block';
+        }
+    }
+
+
+
+</script>
+
+
+</html>

@@ -1,0 +1,209 @@
+body {
+    font-family: 'Microsoft YaHei';
+}
+.wrap {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    left: 20%; /* 设置左侧距离为 20% */
+    top: 0;
+    border: 1px solid #ebebeb;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+.header {
+    height: 55px;
+    overflow: hidden;
+}
+.header h3 {
+    color: #faf3fc;
+    line-height: 40px;
+    font-weight: normal;
+    float: left;
+    letter-spacing: 2px;
+    margin-left: 25px;
+    font-size: 18px;
+    text-shadow: 0px 0px 5px #944846;
+}
+.header img {
+    float: right;
+    margin: 7px 25px 0 0;
+    border-radius: 20px;
+    box-shadow: 0 0 5px #f7f2fe;
+}
+.main {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 25%;
+    background-color: #f4f3f3;
+    box-sizing: border-box;
+    padding: 10px 0;
+    overflow:hidden;
+}
+.talk_list{
+    position: absolute;
+    width:100%;
+    left:0px;
+    top:0px;
+}
+.talk_list li {
+    overflow: hidden;
+    margin: 20px 0px 30px;
+}
+.talk_list .left_word img {
+    float: left;
+    margin-left: 3%;
+}
+.talk_list .left_word span {
+    float: left;
+    background-image: url(../result_img/panel.png);
+    background-size: cover;
+    padding: 10px 15px;
+    max-width: 40%;
+    border-radius: 12px;
+    font-size: 22px;
+    color: #fff;
+    margin-left: 13px;
+    position: relative;
+    line-height: 24px;
+}
+.talk_list .left_word span:before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 3px;
+    width: 13px;
+    height: 12px;
+    background: url('../static/chat_img/corner01.png') no-repeat;
+}
+.talk_list .right_word img {
+    float: right;
+    margin-right: 20px;
+}
+.talk_list .right_word span {
+    float: right;
+    background-image: url(../result_img/panel.png);
+    background-size: cover;
+    padding: 10px 15px;
+    max-width: 40%;
+    border-radius: 12px;
+    font-size: 22px;
+    color: #000;
+    margin-right: 13px;
+    position: relative;
+    line-height: 24px;
+}
+.talk_list .right_word span:before {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 3px;
+    width: 13px;
+    height: 12px;
+    background: url('../static/chat_img/corner02.png') no-repeat;
+}
+.drag_bar{
+    position:absolute;
+    right:0px;
+    top:0px;
+    background-color: #fff;
+    height:100%;
+    width:6px;
+    box-sizing:border-box;
+    border-bottom:1px solid #f4f3f3;
+}
+.drager{
+    position:absolute;
+    left:0px;
+    top:0px;
+    background-color: #cdcdcd;
+    height:100px;
+    width:6px;
+    border-radius:3px;
+    cursor: pointer;
+}
+
+
+.footer {
+    width: 90%;
+    height: 20%;
+    left: 3%;
+    bottom: 3%;
+    background-color: #fff;
+    position: absolute;
+}
+
+.input_wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+#ipt {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background-color: #f4f3f3;
+    border-radius: 8px;
+    padding: 0 15px;
+    text-align: left;
+}
+
+
+
+.input_sub {
+    position: absolute;
+    bottom: 10%;
+    right: 1%;
+    width: 20%;
+    height: 20%;
+    border: 0;
+    background-color: #256fdd;
+    padding: 0;
+    color: #fff;
+    cursor: pointer;    
+}
+
+
+
+.footer img{
+    float: left;
+    margin:2px 0 0 20px;
+}
+
+
+.beijing {
+    display: inline-block;  /* 使用内联块元素以便应用样式 */
+    width: auto;  /* 根据内容自动调整宽度 */
+    height: auto;  /* 根据内容自动调整高度 */
+    padding: 10px 15px;  /* 添加内边距增加按钮区域 */
+    margin: 9px 0 0 15px;
+    border-radius: 8px;
+    border: none;  /* 移除边框 */
+    background-color: #1b61cb;
+    color: #fff;
+    text-decoration: none;  /* 移除下划线 */
+    font-weight: bold;  /* 设置字体粗细 */
+    cursor: pointer;
+    transition: background-color 0.3s ease;  /* 添加过渡效果 */
+}
+
+.beijing:hover {
+    background-color: #cf1a1a;  /* 鼠标悬停时的背景颜色 */
+}
+
+
+
+.left_word img {
+    width: 50px;
+    border-radius: 25px;
+}
+.right_word img,
+.footer img {
+    width: 50px !important;
+    border-radius: 25px;
+}

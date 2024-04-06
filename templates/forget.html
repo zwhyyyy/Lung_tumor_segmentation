@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/demo.css" />
+    <link rel="stylesheet" href="../static/js/vendor/jgrowl/css/jquery.jgrowl.min.css">
+    <!--必要样式-->
+    <link rel="stylesheet" type="text/css" href="../static/css/component.css" />
+    <!--[if IE]>
+<script src="../static/js/html5.js"></script>
+<![endif]-->
+    <style>
+        input::-webkit-input-placeholder {
+            color: rgba(0, 0, 0, 0.726);
+        }
+
+        input::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: rgba(0, 0, 0, 0.726);
+        }
+
+        input:-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: rgba(0, 0, 0, 0.726);
+        }
+
+        input:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: rgba(0, 0, 0, 0.726);
+        }
+
+        #form1 {
+            position: absolute;
+            left: 0%;
+            top: 15.5%;
+            width: 110%;
+            height: 110%;
+            z-index: 99;
+        }
+
+
+        #email1 {
+            position: absolute;
+            width: 90%;
+            height: 10%;
+            top: 2.2%;
+            z-index: 9999;
+            padding: 0;
+            /* 设置内边距为零 */
+            border: none;
+            /* 去掉边框 */
+            box-sizing: border-box;/
+        }
+
+        #password1 {
+            position: absolute;
+            height: 10%;
+            width: 90%;
+            top: 22.8%;
+            /* 设置上下间距 */
+            z-index: 9999;
+
+        }
+
+        #VER {
+            position: absolute;
+            height: 12%;
+            width: 68%;
+            left: 10%;
+            top: 55%;
+            /* 设置上下间距 */
+        }
+
+        #REG {
+            position: absolute;
+            height: 12%;
+            width: 68%;
+            left: 10%;
+            top: 70%;
+            /* 设置上下间距 */
+        }
+
+        #email::placeholder {
+            color: rgb(28, 235, 17);
+            /* 设置占位符文本颜色为红色 */
+            text-align: center;
+            /* 设置文本居中 */
+
+        }
+
+        #verification::placeholder {
+            color: rgb(28, 235, 17);
+            /* 设置占位符文本颜色为红色 */
+            text-align: center;
+            /* 设置文本居中 */
+
+        }
+
+        #h {
+            position: absolute;
+            width: 90%;
+            left: 20%;
+            top: 85%;
+            /* 设置上下间距 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container demo-1">
+        <div class="content">
+            <div id="large-header" class="large-header">
+
+                <img src="../static/img/bg-4.png"
+                    style="position: absolute; background-size:contain; width: 112%; height: 100%;z-index: -11;">
+                <img src="../static/img/m4.gif"
+                    style="position: absolute; background-size:contain; width: 25%; height: 26%;left:0%;top:3%;z-index: 1000;">
+                <img src="../static/img/m5.gif"
+                    style="position: absolute; background-size:contain; width: 38%; height: 50%;left:65%;top:50%;z-index: 1000;">
+                <img src="../static/img/border-1.png"
+                    style="position: absolute; background-size:contain; width: 34%; height: 10%;left:33%;top:31%;z-index: 0;">
+                <img src="../static/img/border-1.png"
+                    style="position: absolute; background-size:contain; width: 34%; height: 10%;left:33%;top:43%;z-index: 0;">
+
+                <canvas id="demo-canvas"></canvas>
+                <div class="logo_box">
+
+                    <div id="form1">
+
+                        <form action="#" name="f" method="post">
+                            <div class="input_outer" id="email1">
+                                <span class="ema"></span>
+                                <input id="email" name="email" class="text"
+                                    style="color: #12dfa9 !important;font-size: 20px" type="text" placeholder="请输入邮箱">
+                            </div>
+                            <div class="input_outer" id="password1">
+                                <span class="ver"></span>
+                                <input id="verification" name="verification" class="text"
+                                    style="color: #12dfa9 !important;display: inline-block;font-size: 20px" type="text"
+                                    placeholder="请输入验证码">
+                            </div>
+                            <div id="VER" class="mb2"><a class="act-but submit" href="javascript:;" onclick="ver()"
+                                    style="color: #FFFFFF">发送验证码</a></div>
+
+                            <div id="REG" class="mb2"><a class="act-but submit" href="javascript:;" onclick="reg()"
+                                    style="color: #FFFFFF">下一步</a></div>
+                            <h4 id="h">想起来密码了？<a href="/">前往登录</a></h4>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div><!-- /container -->
+    <script src="../static/js/TweenLite.min.js"></script>
+    <script src="../static/js/EasePack.min.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/rAF.js"></script>
+    <script src="../static/js/demo-1.js"></script>
+    <script src="../static/js/vendor/jgrowl/jquery.jgrowl.min.js"></script>
+    <script src="../static/js/Longin.js"></script>
+    <div style="text-align:center;"></div>
+
+    <script>
+        function ver() {
+            var email = document.getElementById("email");
+            var ver = document.getElementById("VER");
+            if (email.value === "") {
+                $.jGrowl("请输入邮箱", { header: '提醒' });
+            } else {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        json_data = xhr.responseText;
+                        js_data = JSON.parse(json_data);
+                        if (js_data.flag === 1) {
+                            alert("发送成功！");
+                            ver.innerHTML = '<a class="act-but submit" href="javascript:;" onclick="ver()" style="color: #FFFFFF">重新发送</a>';
+                        }
+                        if (js_data.flag === 2) {
+                            alert("邮箱不存在！");
+                        }
+                        if (js_data.flag === 3) {
+                            alert("该邮箱未注册！");
+                        }
+                        if (js_data.flag === 4) {
+                            alert("请60秒后再发送！");
+                        }
+                    }
+                }
+                xhr.open('post', "/forget/", true);
+                xhr.setRequestHeader('Content-Type', "application/json");
+                var data = { "email": email.value, "btn": 1 };
+                // js对象转换为 json传输
+                xhr.send(JSON.stringify(data));
+            }
+        }
+
+        function reg() {
+            var email = document.getElementById("email");
+            var verification = document.getElementById("verification");
+            if (email.value === "") {
+                $.jGrowl("请输入邮箱", { header: '提醒' });
+            } else if (verification.value === "") {
+                $.jGrowl("请输入验证码", { header: '提醒' });
+            } else {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        json_data = xhr.responseText;
+                        js_data = JSON.parse(json_data);
+                        if (js_data.flag === 1) {
+                            alert("成功")
+                            window.location.href = "/alter?email=" + email.value;
+                        }
+                        if (js_data.flag === 2) {
+                            alert("请输入正确的验证码！");
+                        }
+                        if (js_data.flag === 3) {
+                            alert("邮箱未注册");
+                        }
+                    }
+                }
+                xhr.open('post', "/forget/", true);
+                xhr.setRequestHeader('Content-Type', "application/json");
+                var data = { "email": email.value, "verification": verification.value, "btn": 2 };
+                // js对象转换为 json传输
+                xhr.send(JSON.stringify(data));
+            }
+        }
+    </script>
+
+</body>
+
+</html>

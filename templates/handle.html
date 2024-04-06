@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>标记点击位置</title>
+
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: url(../static/handleimg/bg.png) no-repeat center;
+      background-size: 100%;
+    }
+
+
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+
+
+    .container {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background-image: url("../static/handleimg/chen.jpg");
+      background-size: contain;
+      background-position: center;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+
+
+    .rectangle {
+      position: absolute;
+      border: 2px solid rgb(10, 235, 10);
+      background-color: rgba(76, 98, 113, 0.1);
+      display: inline-block;
+      cursor: move;
+      /* 鼠标样式设为可移动指针 */
+    }
+
+    label {
+      margin-right: 10px;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    html {
+      overflow: hidden;
+    }
+
+    .div1 {
+      background-color: rgba(255, 255, 255, 0.8);
+      /* 半透明白色背景 */
+      position: absolute;
+      /* 或者 position: fixed; */
+      top: 5%;
+      /* 设置div垂直居中 */
+      left: 2%;
+      /* 设置div水平居中 */
+      z-index: 2;
+      /* 设置z-index使div位于canvas上面 */
+      width: 80%;
+      height: 80%;
+    }
+
+    #container2 {
+      position: absolute;
+      width: 25.2%;
+      height: 44.7%;
+      top: 17.5%;
+      left: 68%;
+    }
+
+    #container1 {
+      position: absolute;
+      width: 25.2%;
+      height: 44.7%;
+      top: 17.5%;
+      left: 5%;
+    }
+
+    #container3 {
+      position: absolute;
+      width: 25.2%;
+      height: 44.7%;
+      top: 17.5%;
+      left: 37.5%;
+    }
+
+    #container6 {
+      position: absolute;
+      width: 25.2%;
+      height: 44.7%;
+      top: 17.5%;
+      left: 68%;
+    }
+
+    #container5 {
+      position: absolute;
+      width: 25.2%;
+      height: 44.7%;
+      top: 17.5%;
+      left: 5%;
+    }
+
+    #container4 {
+      position: absolute;
+      width: 25.2%;
+      height: 44.7%;
+      top: 17.5%;
+      left: 37.5%;
+    }
+
+    #quandiv {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+
+    }
+
+    canvas {
+      background: #111;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      /* 或者 position: fixed; */
+      top: 0;
+      left: 0;
+      z-index: 1;
+      /* 设置z-index使canvas位于底层 */
+    }
+
+    .line {
+      position: absolute;
+      border-top: 2px solid red;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      pointer-events: none;
+      /* Make sure the line does not interfere with slider */
+    }
+
+    .ll {
+      position: absolute;
+      border-left: 2px solid red;
+      height: 100%;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      pointer-events: none;
+      /* Make sure the line does not interfere with slider */
+    }
+
+    #pingtai {
+      position: absolute;
+      font-size: 35px;
+      left: 10%;
+      color: #ffffff;
+      top: 4%;
+    }
+
+    #shouye {
+      position: absolute;
+      width: 12.5%;
+      height: 6%;
+      left: 72%;
+      top: 2%;
+      background-image: url(../static/handleimg/titBg.png);
+      background-size: cover;
+    }
+
+    #geren {
+      position: absolute;
+      width: 12.5%;
+      height: 6%;
+      left: 87%;
+      top: 2%;
+      background-image: url(../static/handleimg/titBg.png);
+      background-size: cover;
+    }
+
+    #shouye1 {
+      position: absolute;
+      font-size: 24px;
+      left: 35%;
+      top: 20%;
+    }
+
+    #geren1 {
+      position: absolute;
+      font-size: 24px;
+      left: 23%;
+      top: 20%;
+    }
+
+    #X-Zview {
+      position: absolute;
+      font-size: 18px;
+      color: rgb(238, 240, 242);
+      left: 7%;
+      top: 68%;
+    }
+
+    #sliderValue5 {
+      position: absolute;
+      font-size: 18px;
+      color: rgb(238, 240, 242);
+      left: 77%;
+      top: 75%;
+    }
+
+    #customRange2 {
+      position: absolute;
+      left: 14%;
+      top: 68.5%;
+      z-index: 2;
+    }
+
+    #X-Yview {
+      position: absolute;
+      font-size: 18px;
+      color: rgb(238, 240, 242);
+      left: 42%;
+      top: 68%;
+    }
+
+    #sliderValue {
+      position: absolute;
+      font-size: 18px;
+      color: rgb(238, 240, 242);
+      left: 42%;
+      top: 75%;
+    }
+
+    #customRange1 {
+      position: absolute;
+      left: 49%;
+      top: 68.5%;
+      z-index: 2;
+    }
+
+    #Y-Zview {
+      position: absolute;
+      font-size: 18px;
+      color: rgb(238, 240, 242);
+      left: 77%;
+      top: 68%;
+    }
+
+    #sliderValue1 {
+      position: absolute;
+      font-size: 18px;
+      color: rgb(238, 240, 242);
+      left: 7%;
+      top: 75%;
+    }
+
+    #customRange5 {
+      position: absolute;
+      left: 84%;
+      top: 68.5%;
+      z-index: 2;
+    }
+
+    #topview {
+      position: absolute;
+      font-size: 18px;
+      color: rgb(238, 240, 242);
+      left: 27.25%;
+      top: 66%;
+    }
+
+    #sliderValue3 {
+      position: absolute;
+      font-size: 18px;
+      color: rgb(238, 240, 242);
+      left: 27.25%;
+      top: 80%;
+    }
+
+    #customRange3 {
+      position: absolute;
+      left: 27.25%;
+      top: 72%;
+      z-index: 2;
+    }
+
+    #bottomview {
+      position: absolute;
+      font-size: 18px;
+      color: rgb(238, 240, 242);
+      left: 62.25%;
+      top: 66%;
+    }
+
+    #sliderValue4 {
+      position: absolute;
+      font-size: 18px;
+      color: rgb(238, 240, 242);
+      left: 62.25%;
+      top: 80%;
+    }
+
+    #customRange4 {
+      position: absolute;
+      left: 62.25%;
+      top: 72%;
+      z-index: 2;
+    }
+
+    .line_img {
+      position: absolute;
+      width: 0.5%;
+      height: 45%;
+      top: 17.5%;
+    }
+
+    .tubiao {
+      position: absolute;
+      width: 5%;
+      height: 8%;
+      left: 1.5%;
+      top: 1.5%;
+    }
+
+    .header {
+      position: absolute;
+      width: 80%;
+      height: 8%;
+      left: 8%;
+      top: 93%;
+    }
+
+    .bian {
+      position: absolute;
+      width: 25%;
+      height: 50%;
+      top: 52.5%;
+    }
+
+    .big {
+      position: absolute;
+      width: 22.5%;
+      height: 25%;
+      left: 37%;
+      top: 75%;
+    }
+
+    .ksh39 {
+      position: absolute;
+      width: 20%;
+      height: 13%;
+      top: 67%;
+      z-index: 1;
+    }
+
+    .data_bg {
+      position: absolute;
+      width: 14.5%;
+      height: 27%;
+      top: 62.5%;
+      z-index: 1;
+    }
+
+    .anniu1 {
+      position: absolute;
+      width: 15%;
+      height: 18%;
+      left: 12%;
+      top: 78%;
+    }
+
+    .anniu2 {
+      position: absolute;
+      width: 15%;
+      height: 18%;
+      left: 73%;
+      top: 78%;
+    }
+
+    #analysis {
+      position: absolute;
+      font-size: 24px;
+      left: 16.5%;
+      top: 85%;
+    }
+
+    #chongxuan {
+      position: absolute;
+      font-size: 20px;
+      left: 77.5%;
+      top: 85%;
+    }
+
+    #chongxuan:hover {
+      cursor: pointer;
+      /* 添加你期望的鼠标图标，例如：*/
+      /* cursor: pointer; */
+      /* cursor: grab; */
+      /* cursor: crosshair; */
+      /* ... */
+    }
+
+    #tip {
+      position: absolute;
+      font-size: 24px;
+      left: 77.5%;
+      top: 85%;
+    }
+
+    a:hover {
+      cursor: grab;
+    }
+
+    #rectangle:hover {
+      cursor: crosshair;
+    }
+
+    a{ 
+            font-family: 'FangSong';
+            color: rgb(255, 255, 255);
+            text-shadow: 0 0 10px rgb(15, 56, 220),
+            0 0 20px rgba(0, 174, 255, 0.769),
+            0 0 30px rgba(0, 174, 255, 0.769),
+            0 0 50px rgba(0, 174, 255, 0.769);
+        }
+        
+
+        a:hover {
+        color: rgb(0, 255, 179); /* 移动到链接上时颜色变为红色 */
+    }
+
+
+    *{margin:0;padding:0;}
+		.circlebox{width:300px;height:300px;/* border:1px solid #000; */margin:30px auto;
+			position: relative; animation:move 2s infinite linear;}
+		.circleblack{width:300px;height:300px;background-color:#000;border-radius:50%;}
+		.circlewhite{width:150px;height:300px;background-color: #fff;border-top-right-radius:150px;border-bottom-right-radius:150px; 
+			position:absolute;top:0;right:0;}
+		.circletop{width:150px;height:150px;border-radius:50%;background:#000;
+			position:absolute;top:0; right:75px;}
+		.circlebot{width:150px;height:150px;border-radius:50%;background:#fff;
+			position:absolute;bottom:0; right:75px;}
+		.circleon{width:75px;height:75px;border-radius:50%;background:#fff;
+			position:absolute;top:37.5px; right:100px;}
+		.circleof{width:75px;height:75px;border-radius:50%;background:#000;
+			position:absolute;bottom:37.5px; right:100px;}
+
+		/* 旋转动画 */
+		@keyframes move{
+			from{transform: rotate(0deg);}
+			to{transform:rotate(360deg); }
+		}
+
+
+        #taiji{
+            position: absolute;
+            left: 41%;
+            top: 21%;
+            z-index: 1000;
+            display: none;
+        }
+
+  </style>
+</head>
+
+<body>
+
+	<div class="circlebox" id="taiji">
+		<div class="circleblack"></div>
+		<div class="circlewhite"></div>
+		<div class="circletop"></div>
+		<div class="circlebot"></div>
+		<div class="circleon"></div>
+		<div class="circleof"></div>	
+	</div>
+
+  <div id="quandiv">
+    <p id="pingtai">肺 癌 诊 断 平 台</p>
+    <!-- 按钮组 -->
+    <div>
+      <label for="customRange1" class="form-label" id="X-Yview">X-Y view</label>
+      <input type="range" class="form-range" id="customRange1" min="0" max="430" step="1" value="200" />
+      <label for="customRange2" class="form-label" id="X-Zview">X-Z view</label>
+      <input type="range" class="form-range" id="customRange2" min="0" max="430" step="1" value="200" />
+      <label for="customRange5" class="form-label" id="Y-Zview">Y-Z view</label>
+      <input type="range" class="form-range" id="customRange5" min="0" max="430" step="1" value="200" />
+
+      <label for="customRange3" class="form-label" id="topview">top view</label>
+      <input type="range" class="form-range" id="customRange3" min="0" max="430" step="1" value="0" />
+      <label for="customRange4" class="form-label" id="bottomview">bottom view</label>
+      <input type="range" class="form-range" id="customRange4" min="0" max="430" step="1" value="400" />
+
+      <p id="sliderValue">X值: 215</p>
+      <p id="sliderValue1">Z值: 215</p>
+      <p id="sliderValue5">Y值: 215</p>
+      <p id="sliderValue3">top值: 0</p>
+      <p id="sliderValue4">bottom值: 430</p>
+    </div>
+
+    <!-- 每张图片两边的类似竖线的装饰线 -->
+    <img src="../static/handleimg/line_img.png" alt="line_img" class="line_img" style="left:1.5%;">
+    <img src="../static/handleimg/line_img.png" alt="line_img" class="line_img" style="left:33%;">
+    <img src="../static/handleimg/line_img.png" alt="line_img" class="line_img" style="left:34%;">
+    <img src="../static/handleimg/line_img.png" alt="line_img" class="line_img" style="left:65.5%;">
+    <img src="../static/handleimg/line_img.png" alt="line_img" class="line_img" style="left:66.5%;">
+    <img src="../static/handleimg/line_img.png" alt="line_img" class="line_img" style="left:98%;">
+
+    <!-- 左上角的图标 -->
+    <img src="../static/handleimg/tubiao.png" alt="tubiao" class="tubiao">
+
+    <!-- 最下面的长条装饰 -->
+    <img src="../static/handleimg/header.png" alt="header" class="header">
+
+    <!-- 最下面的左边和右边的装饰 -->
+    <img src="../static/handleimg/zuobian.png" alt="zuobian" class="bian" style="left:-3%;">
+    <img src="../static/handleimg/youbian.png" alt="youbian" class="bian" style="left:78%;">
+
+    <!-- 最下面正中间的装饰 -->
+    <img src="../static/handleimg/big.png" alt="big" class="big">
+
+    <!-- 写X-Y view的那三个框 -->
+    <img src="../static/handleimg/ksh39.png" alt="ksh39" class="ksh39" style="left:5%;">
+    <img src="../static/handleimg/ksh39.png" alt="ksh39" class="ksh39" style="left:40%;">
+    <img src="../static/handleimg/ksh39.png" alt="ksh39" class="ksh39" style="left:75%;">
+
+    <!-- 设置的top和bottom的两个框框 -->
+    <img src="../static/handleimg/data_bg.png" alt="data_bg" class="data_bg" style="left:25%;">
+    <img src="../static/handleimg/data_bg.png" alt="data_bg" class="data_bg" style="left:60%;">
+
+    <!-- 无提示 -->
+    <div id="notip" style="display: block;">
+      <div class="container" id="container4"></div>
+      <div class="container" id="container5"></div>
+      <div class="container" id="container6"></div>
+    </div>
+    <!-- box图片 -->
+    <div id="box" style="display: none;">
+      <div class="container" id="container3">
+        <div class="rectangle" id="rectangle" style="border: 2px solid red;width: 150px;height: 150px;">
+
+        </div>
+        <div class="line" id="line"></div>
+        <div class="ll" id="l1"></div>
+      </div>
+      <div class="container" id="container1">
+        <div class="rectangle" id="rectangle1" style="width: 150px;height: 100%; visibility :hidden;">
+
+        </div>
+        <div class="line" id="line1"></div>
+        <div class="ll" id="l2"></div>
+      </div>
+      <div class="container" id="container2">
+        <div class="rectangle" id="rectangle2" style="width: 150px;height: 100%;visibility :hidden">
+
+        </div>
+        <div class="line" id="line2"></div>
+        <div class="ll" id="l3"></div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- 其它按钮组 -->
+  <div id="shouye">
+    <a herf="/backgroundstage/" id="shouye1">首页</a>
+  </div>
+
+  <div id="geren">
+    <a herf="" id="geren1">个人中心</a>
+  </div>
+
+  <img src="../static/handleimg/anniu.png" alt="anniu" class="anniu1">
+  <img src="../static/handleimg/anniu.png" alt="anniu" class="anniu2">
+
+  <a herf="" id="analysis">开始分析</a>
+  <a herf="" id="chongxuan" style="display: none;" onclick="tips()">无提示</a>
+  <a herf="" id="tip" onclick="tips()">框提示</a>
+
+  </div>
+  </div>
+
+  <script>
+    function tips() {
+      var notip = document.getElementById("notip");
+      var box = document.getElementById("box");
+      var chongxuan = document.getElementById("chongxuan");
+      var tips = document.getElementById("tip");
+
+      if (box.style.display === "none") {
+        box.style.display = "block";
+        notip.style.display = "none";
+        tips.style.display = "none";
+        chongxuan.style.display = "block";
+      } else {
+        box.style.display = "none";
+        notip.style.display = "block";
+        tips.style.display = "block";
+        chongxuan.style.display = "none";
+
+      }
+    }
+
+  </script>
+
+
+  <script>
+
+    var img1_loc = "{{ img1_loc }}"
+    var img2_loc = "{{ img2_loc }}"
+    var img3_loc = "{{ img3_loc }}"
+
+    document.getElementById("container3").style.backgroundImage = "url(" + img1_loc + ")";
+    document.getElementById("container1").style.backgroundImage = "url(" + img2_loc + ")";
+    document.getElementById("container2").style.backgroundImage = "url(" + img3_loc + ")";
+    document.getElementById("container4").style.backgroundImage = "url(" + img1_loc + ")";
+    document.getElementById("container5").style.backgroundImage = "url(" + img2_loc + ")";
+    document.getElementById("container6").style.backgroundImage = "url(" + img3_loc + ")";
+
+  </script>
+
+  <script>
+    var mybutton = document.getElementById("analysis");
+    mybutton.addEventListener("click", function () {
+      var taiji = document.getElementById("taiji");
+      taiji.style.display = "block";
+
+      var rectangle = document.getElementById("rectangle");
+      var rangeSlider3 = document.getElementById("customRange3");
+      var rangeSlider4 = document.getElementById("customRange4");
+      var xhr = new XMLHttpRequest();
+
+
+      var screenWidth = window.innerWidth;
+      var screenHeight = window.innerHeight;
+      var rect = document.getElementById("container3");
+      var computedStyle = window.getComputedStyle(rect);
+      var widthValue = parseFloat(computedStyle.width) / 100 * screenWidth;
+      var heightValue = parseFloat(computedStyle.height) / 100 * screenHeight;
+
+      xhr.open('post', "/handle/", true);
+      xhr.setRequestHeader('Content-Type', "application/json");
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+
+          // 获取接收到的列表数据
+          var imageList = response.image_list;
+          var report = response.report;
+
+          console.log(JSON.stringify(imageList))
+
+          // 在这里执行你想要的操作，比如跳转到另一个页面并带上列表信息
+          var url = '/result/?image_list=' + JSON.stringify(imageList) + "&&report=" + JSON.stringify(report);
+
+          window.location.href = url;
+        } else {
+          console.error('错误:', xhr.status);
+        }
+      };
+
+      if (box.style.display === "none") {
+        var data = { "x1": -99 }
+      }
+      else {
+        var data = {
+          "x1": parseInt(rectangle.style.left),
+          "y1": parseInt(rectangle.style.top),
+          "x2": parseInt(rectangle.style.left) + rectangle.offsetWidth,
+          "y2": parseInt(rectangle.style.top) + rectangle.offsetHeight,
+          "z1": parseInt(rangeSlider3.value),
+          "z2": parseInt(rangeSlider4.value),
+          "widthValue": widthValue,
+          "heightValue": heightValue
+        };
+      }
+
+      // js对象转换为 json传输
+      xhr.send(JSON.stringify(data));
+    })
+
+
+  </script>
+
+
+  <script>
+    var screenWidth = window.innerWidth;
+    var screenHeight = window.innerHeight;
+    var rect = document.getElementById("container3");
+    var computedStyle = window.getComputedStyle(rect);
+    var widthValue = parseFloat(computedStyle.width) / 100 * screenWidth;
+    var heightValue = parseFloat(computedStyle.height) / 100 * screenHeight;
+
+    // 获取滑块元素
+    var rangeSlider = document.getElementById("customRange1");
+
+    // 获取显示值的元素
+    var sliderValueElement = document.getElementById("sliderValue");
+
+    // 初始显示滑块的值
+    sliderValueElement.innerHTML = "Z值: " + rangeSlider.value;
+
+    // 监听滑块值的变化
+    rangeSlider.addEventListener("input", function () {
+      // 更新显示的值
+      sliderValueElement.innerHTML = "Z值: " + rangeSlider.value;
+      const line1 = document.getElementById("line1");
+      var value1 = parseInt(rangeSlider.value);
+      var y1 = value1 * heightValue / 430;
+      line1.style.top = `${y1}px`;
+
+
+      const line2 = document.getElementById("line2");
+      line2.style.top = `${y1}px`;
+
+
+
+
+
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'text'; // 修改期望的响应类型为text，以接收Base64字符串
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // 请求成功，将Base64字符串转换为可用的图像URL
+          var base64Image = xhr.responseText;
+          var imageUrl = 'data:image/png;base64,' + base64Image;
+          document.getElementById('container3').style.backgroundImage = 'url(' + imageUrl + ')';
+        }
+      };
+      xhr.open('POST', "/handle/", true);
+      xhr.setRequestHeader('Content-Type', "application/json");
+      var data = { "Z": parseInt(rangeSlider.value) };
+      xhr.send(JSON.stringify(data));
+    });
+  </script>
+
+  <script>
+    // 获取滑块元素
+    var screenWidth = window.innerWidth;
+    var screenHeight = window.innerHeight;
+    var rect = document.getElementById("container3");
+    var computedStyle = window.getComputedStyle(rect);
+    var widthValue = parseFloat(computedStyle.width) / 100 * screenWidth;
+    var heightValue = parseFloat(computedStyle.height) / 100 * screenHeight;
+    var rangeSlider1 = document.getElementById("customRange2");
+
+    // 获取显示值的元素
+    var sliderValueElement1 = document.getElementById("sliderValue1");
+
+    // 初始显示滑块的值
+    sliderValueElement1.innerHTML = "Y值: " + rangeSlider1.value;
+
+    // 监听滑块值的变化
+    rangeSlider1.addEventListener("input", function () {
+      // 更新显示的值
+      sliderValueElement1.innerHTML = "Y值: " + rangeSlider1.value;
+
+      const line = document.getElementById("line");
+      var y = parseInt(rangeSlider1.value);
+      y = y * widthValue / 430;
+      const l3 = document.getElementById("l3");
+      l3.style.left = `${y}px`;
+
+      l1.style.left = `${y}px`;
+
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'text'; // 修改期望的响应类型为text，以接收Base64字符串
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // 请求成功，将Base64字符串转换为可用的图像URL
+          var base64Image = xhr.responseText;
+          var imageUrl = 'data:image/png;base64,' + base64Image;
+          document.getElementById('container1').style.backgroundImage = 'url(' + imageUrl + ')';
+        }
+      };
+      xhr.open('POST', "/handle/", true);
+      xhr.setRequestHeader('Content-Type', "application/json");
+      var data = { "Y": parseInt(rangeSlider1.value) };
+      xhr.send(JSON.stringify(data));
+
+    });
+  </script>
+
+  <script>
+    var screenWidth = window.innerWidth;
+    var screenHeight = window.innerHeight;
+    var rect = document.getElementById("container3");
+    var computedStyle = window.getComputedStyle(rect);
+    var widthValue = parseFloat(computedStyle.width) / 100 * screenWidth;
+    var heightValue = parseFloat(computedStyle.height) / 100 * screenHeight;
+    // 获取滑块元素
+    var rangeSlider6 = document.getElementById("customRange5");
+
+    // 获取显示值的元素
+    var sliderValueElement6 = document.getElementById("sliderValue5");
+
+    // 初始显示滑块的值
+    sliderValueElement6.innerHTML = "X值: " + rangeSlider6.value;
+
+    // 监听滑块值的变化
+    rangeSlider6.addEventListener("input", function () {
+      // 更新显示的值
+      sliderValueElement6.innerHTML = "X值: " + rangeSlider6.value;
+
+      const l1 = document.getElementById("l1");
+      const value = parseInt(rangeSlider6.value);
+      var y = value * widthValue / 430;
+      const l2 = document.getElementById("l2");
+      l2.style.left = `${y}px`;
+      y = value * heightValue / 430;
+      line.style.top = `${y}px`;
+
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'text'; // 修改期望的响应类型为text，以接收Base64字符串
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // 请求成功，将Base64字符串转换为可用的图像URL
+          var base64Image = xhr.responseText;
+          var imageUrl = 'data:image/png;base64,' + base64Image;
+          document.getElementById('container2').style.backgroundImage = 'url(' + imageUrl + ')';
+        }
+      };
+      xhr.open('POST', "/handle/", true);
+      xhr.setRequestHeader('Content-Type', "application/json");
+      var data = { "X": parseInt(rangeSlider6.value) };
+      xhr.send(JSON.stringify(data));
+
+    });
+  </script>
+
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const rectangle = document.getElementById("rectangle");
+      const rectangle1 = document.getElementById("rectangle1");
+      const rectangle2 = document.getElementById("rectangle2");
+      let isResizing = false; // 是否在改变大小的标志
+      let isDragging = false; // 是否在拖动的标志
+      let startX, startY, startWidth, startHeight; // 初始位置和大小
+      let startX1, startY1, startWidth1, startHeight1; // 初始位置和大小
+      let startX2, startY2, startWidth2, startHeight2; // 初始位置和大小
+      rectangle.addEventListener("mousedown", initResize); // 添加鼠标按下事件监听器
+      rectangle.addEventListener("mousemove", drag); // 添加鼠标移动事件监听器
+      rectangle.addEventListener("wheel", handleWheel); // 添加鼠标滚轴事件监听器
+      // 初始化改变大小
+      function initResize(e) {
+        e.preventDefault();
+        isResizing = true; // 开始改变大小
+        isDragging = true; // 开始拖动
+        startX = e.clientX; // 获取鼠标按下时的X坐标
+        startY = e.clientY; // 获取鼠标按下时的Y坐标
+        startWidth = parseInt(
+          document.defaultView.getComputedStyle(rectangle).width,
+          10
+        ); // 获取矩形框当前的宽度
+        startHeight = parseInt(
+          document.defaultView.getComputedStyle(rectangle).height,
+          10
+        ); // 获取矩形框当前的高度
+      }
+      // 拖动
+      function drag(e) {
+        if (isDragging) {
+          const deltaX = e.clientX - startX; // 计算X方向上的移动距离
+          const deltaY = e.clientY - startY; // 计算Y方向上的移动距离
+          const rectX = rectangle.offsetLeft + deltaX; // 计算新的X坐标
+          const rectY = rectangle.offsetTop + deltaY; // 计算新的Y坐标
+
+          const rectX1 = rectangle1.offsetLeft + deltaY; // 计算新的X坐标
+          const rectX2 = rectangle2.offsetLeft + deltaX; // 计算新的X坐标
+
+          // 更新矩形位置
+          rectangle.style.left = rectX + "px"; // 设置矩形框的新X坐标
+          rectangle.style.top = rectY + "px"; // 设置矩形框的新Y坐标
+          rectangle1.style.left = rectX1 + "px"; // 设置矩形框的新X坐标
+          rectangle2.style.left = rectX2 + "px"; // 设置矩形框的新X坐标
+
+
+          //消失逻辑
+          if (
+            parseInt(rangeSlider1.value) > rectX &&
+            parseInt(rangeSlider1.value) < rectX + startWidth
+          ) {
+            rectangle2.style.visibility = "visible";
+            if (
+              parseInt(rangeSlider6.value) > rectX &&
+              parseInt(rangeSlider6.value) < rectX + startWidth
+            ) {
+              rectangle.style.border = " 2px solid rgb(10, 235, 10)";
+            }
+
+          } else {
+            rectangle2.style.visibility = "hidden"; // 或者设置其他显示方式，如 "inline"、"inline-block"
+            rectangle.style.border = " 2px solid red";
+          }
+
+          if (
+            parseInt(rangeSlider6.value) > rectY &&
+            parseInt(rangeSlider6.value) < rectY + startHeight
+          ) {
+            rectangle1.style.visibility = "visible";
+            if (
+              parseInt(rangeSlider1.value) > rectY &&
+              parseInt(rangeSlider1.value) < rectY + startHeight
+            ) {
+              rectangle.style.border = " 2px solid rgb(10, 235, 10)";
+            }
+
+          } else {
+            rectangle1.style.visibility = "hidden"; // 或者设置其他显示方式，如 "inline"、"inline-block"
+            rectangle.style.border = " 2px solid red";
+          }
+
+          startX = e.clientX; // 更新起始X坐标
+          startY = e.clientY; // 更新起始Y坐标
+        }
+      }
+
+      // 鼠标松开事件监听器
+      document.addEventListener("mouseup", function () {
+        isDragging = false; // 停止拖动
+        document.removeEventListener("mousemove", drag); // 移除改变大小的事件监听器
+      });
+      // 鼠标滚轴事件处理
+      function handleWheel(event) {
+        event.preventDefault(); // 阻止默认滚动行为
+        const delta = Math.max(
+          -1,
+          Math.min(1, event.wheelDelta || -event.detail)
+        ); // 获取滚轴滚动方向
+        startWidth = parseInt(rectangle.style.width) || rectangle.offsetWidth; // 获取当前矩形的宽度
+        startHeight = parseInt(rectangle.style.height) || rectangle.offsetHeight; // 获取当前矩形的高度
+        const step = 10; // 每次滚动的大小
+        if (delta > 0) {
+          // 向上滚动，增加大小
+          startWidth += step;
+          startHeight += step;
+        } else {
+          // 向下滚动，减小大小
+          startWidth = Math.max(step, startWidth - step);
+          startHeight = Math.max(step, startHeight - step);
+        }
+        rectangle.style.width = startWidth + "px"; // 设置新的宽度
+        rectangle.style.height = startHeight + "px"; // 设置新的高度
+        rectangle1.style.width = startWidth + "px"; // 设置新的宽度
+        rectangle2.style.width = startWidth + "px"; // 设置新的宽度
+      }
+    });
+
+  </script>
+  <script>
+    // 获取滑块元素
+    var rangeSlider3 = document.getElementById("customRange3");
+
+    // 获取显示值的元素
+    var sliderValueElement3 = document.getElementById("sliderValue3");
+
+    // 初始显示滑块的值
+    sliderValueElement3.innerHTML = "top: " + rangeSlider3.value;
+
+    // 监听滑块值的变化
+    rangeSlider3.addEventListener("input", function () {
+      // 更新显示的值
+      sliderValueElement3.innerHTML = "top: " + rangeSlider3.value;
+      var rangeSlider4 = document.getElementById("customRange4");
+      if (parseInt(rangeSlider3.value) < parseInt(rangeSlider4.value) - 10) {
+        rectangle1.style.top = rangeSlider3.value + 'px';
+        rectangle1.style.height = rangeSlider4.value - rangeSlider3.value + 'px';
+
+        rectangle2.style.top = rangeSlider3.value + 'px';
+        rectangle2.style.height = rangeSlider4.value - rangeSlider3.value + 'px';
+
+        var rangeSlider = document.getElementById("customRange1");
+        if (parseInt(rangeSlider.value) > parseInt(rangeSlider3.value)) {
+          rectangle.style.visibility = "visible";
+          rectangle1.style.border = " 2px solid rgb(10, 235, 10)";
+        } else {
+          rectangle.style.visibility = "hidden"; // 或者设置其他显示方式，如 "inline"、"inline-block"
+          rectangle1.style.border = " 2px solid red";
+        }
+
+      }
+
+    });
+  </script>
+
+  <script>
+    // 获取滑块元素
+    var rangeSlider4 = document.getElementById("customRange4");
+
+    // 获取显示值的元素
+    var sliderValueElement4 = document.getElementById("sliderValue4");
+
+    // 初始显示滑块的值
+    sliderValueElement4.innerHTML = "bottom: " + rangeSlider4.value;
+
+    // 监听滑块值的变化
+    rangeSlider4.addEventListener("input", function () {
+      // 更新显示的值
+      sliderValueElement4.innerHTML = "bottom: " + rangeSlider4.value;
+      if (parseInt(rangeSlider3.value) < parseInt(rangeSlider4.value) - 10) {
+        rectangle1.style.height = rangeSlider4.value - rangeSlider3.value + 'px';
+        rectangle2.style.height = rangeSlider4.value - rangeSlider3.value + 'px';
+
+        var rangeSlider = document.getElementById("customRange1");
+        if (parseInt(rangeSlider.value) < parseInt(rangeSlider4.value)) {
+          rectangle.style.visibility = "visible";
+          rectangle1.style.border = " 2px solid rgb(10, 235, 10)";
+        } else {
+          rectangle.style.visibility = "hidden"; // 或者设置其他显示方式，如 "inline"、"inline-block"
+          rectangle1.style.border = " 2px solid red";
+        }
+
+      }
+
+    });
+
+  </script>
+
+</body>
+
+</html>

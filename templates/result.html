@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="../static/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+  <script src="../static/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+
+  <style>
+body {
+	width: 100%;
+  height: 100%;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
+
+}
+
+    .carousel1 {
+      width: 45%;
+      height: 58%;
+      position: absolute;
+      left: 27.5%;
+      top: 15%;
+      overflow: hidden;
+    }
+    .carousel-inner1 {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel-item1 {
+      flex: 0 0 100%;
+      display: flex;
+      /* align-items: center; */  /* Commented out */
+      /* justify-content: center; */  /* Commented out */
+      text-align: center;
+      font-size: 24px;
+    }
+    .carousel-item1 img {
+      object-fit: cover; /* Added */
+      width: 100%; /* Added */
+      height: 100%; /* Added */
+    }
+    .carousel-prev1,
+    .carousel-next1 {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background-color: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 24px;
+      text-decoration: none;
+    }
+    .carousel-prev1 {
+      left: 10px;
+    }
+    .carousel-next1 {
+      right: 10px;
+    }
+
+    #mybutton{
+      position: absolute;
+      left: 12%;
+      top:30%;
+
+    }
+
+    #downloadCarouselButton {
+  position: absolute;
+  left: 12%;
+  top: 60%;
+
+
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+#button2{
+  position: absolute;
+  left: 85%;
+  top: 60%;
+
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+#mybutton1{
+  position: absolute;
+      left: 85%;
+      top:30%;
+
+      position: absolute;
+
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+}
+
+#div1{
+      width: 40%;
+      height: 60%;
+      position: absolute;
+      left: 30%;
+      top: 15%;
+      display: none;
+      z-index: 99;
+      background-image: url(../static/chat_img/2.png);
+      background-size: 100% 100%;
+      background-color: rgb(0, 213, 255);
+      z-index: 1000;
+}
+
+
+button {
+      z-index: 1;
+      font-size: 20px;
+      color: white;
+      background: #40a9ff;
+      outline: none;
+      border: none;
+      padding: 0.5em 1em;
+    }
+
+    button:hover {
+      cursor: pointer;
+      animation: jelly 0.5s;
+    }
+
+    @keyframes jelly {
+
+      0%,
+      100% {
+        transform: scale(1, 1);
+      }
+
+      25%,
+      75% {
+        transform: scale(0.9, 1.1);
+      }
+
+      50% {
+        transform: scale(1.1, 0.9);
+      }
+    }
+
+button {
+  font-size: 25px;
+  width: 10%;
+  height: 10%;
+  background-color: blue; 
+  background-size: 100% 100%;
+      position: relative;
+      z-index: 1;
+      border: none;
+      outline: none;
+      padding: 0.5em 1em;
+      font-family: 'FangSong';
+      color: rgb(255, 255, 255);
+      text-shadow: 0 0 10px  rgb(0, 247, 255),
+        0 0 20px rgb(0, 247, 255),
+        0 0 30px  rgb(0, 247, 255),
+        0 0 50px  rgb(0, 247, 255);
+      background-image: url(../static/result_img/panel.png);
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    button::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      transform: scale(1);
+      transform-origin: center;
+    }
+
+    button:hover::before {
+      transition: all 0.75s ease-out;
+      border: 1px solid#e6f7ff;
+      transform: scale(1.25);
+      opacity: 0;
+    }
+
+#canvas{
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#biaoti{
+  position: absolute;
+  left: 10%;
+  top: 8%;
+  width: 80%;
+  height: 15%;
+}
+
+#beizhu{
+  position: absolute;
+  left: 10%;
+  top: 28%;
+  width: 80%;
+  height: 55%;
+}
+
+#floatingInput{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../static/result_img/panel.png);
+    background-size: 100% 100%;
+}
+
+#floatingTextarea2{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../static/result_img/panel.png);
+  background-size: 100% 100%;
+}
+
+
+
+    #sure {
+        position: absolute;
+        left: 25%;
+        top: 87%;
+        width: 15%;
+        height: 10%;
+    }
+
+    #cancle {
+      position: absolute;
+        left: 55%;
+        top: 87%;
+        width: 15%;
+        height: 10%;
+    }
+
+    #close {
+        position: absolute;
+        left: 25%;
+        top: 87%;
+        width: 10%;
+        height: 8%;
+    }
+
+    #download {
+      position: absolute;
+        left: 55%;
+        top: 87%;
+        width: 10%;
+        height: 8%;
+    }
+
+
+    input, textarea {
+      font-family: 'FangSong';
+        font-size: 22px !important;
+        padding: 10px;
+        border-radius: 5px;
+        color: rgb(16, 140, 194) !important;
+
+
+    }
+
+    .modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+/* 将报告窗口整体位于页面中心 */
+.modal-dialog {
+  display: flex;
+  left: 15%;
+  top: 10%;
+  min-height: 80vh; /* 使模态框填满整个视口高度 */
+  margin: 0; /* 取消默认的margin */
+
+}
+
+/* 修复报告框的样式 */
+.modal-body {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  text-align: left; /* 将报告内容居中 */
+  color: #000808;
+  background-image: url(../static/chat_img/panel2.png);
+  background-size: 100% 100%;
+}
+
+.wider-modal {
+  max-width: 70%; /* 设置你想要的宽度 */
+  width: 100%;
+}
+
+p {
+      font-family: 'FangSong';
+      color: rgb(23, 234, 69);
+      text-shadow: 0 0 10px rgb(15, 56, 220),
+        0 0 20px rgba(7, 231, 235, 0.769),
+        0 0 30px rgba(7, 231, 235, 0.769),
+        0 0 50px rgba(7, 231, 235, 0.769);
+      text-decoration: none;
+      font-size: 20px;
+      white-space: nowrap;
+    }
+
+
+  </style>
+
+
+
+</head>
+<body>
+
+
+  <img src="../static/result_img/bg2.jpeg" alt="result1" style="position:absolute;width:100%;height: 100%;left: 0;top:0;z-index: -99;">
+
+  <img src="../static/result_img/fang5.png" alt="result1" style="position:absolute;width:50%;height: 72%;left: 25%;top:9%;z-index: -99;">
+  <img src="../static/result_img/6kuang.gif" alt="result1" style="position:absolute;width:50%;height: 30%;left: 25%;top:70%;z-index: 99;">
+
+  <img src="../static/result_img/5kuang.gif" alt="result1" style="position:absolute;width:10%;height: 13%;left: 2%;top:28%;z-index: -99;">
+  <img src="../static/result_img/5kuang.gif" alt="result1" style="position:absolute;width:10%;height: 13%;left: 2%;top:60%;z-index: -99;">
+  <img src="../static/result_img/5kuang.gif" alt="result1" style="position:absolute;width:10%;height: 13%;left: 75%;top:28%;z-index: -99;">
+  <img src="../static/result_img/5kuang.gif" alt="result1" style="position:absolute;width:10%;height: 13%;left: 75%;top:60%;z-index: -99;">
+
+    <div id="carousel1" class="carousel1">
+      <div class="carousel-inner1">
+        {% for image_path in image_list %}
+        <div class="carousel-item1">
+          <img src="{{ image_path }}" alt="result2" />
+        </div>
+        {% endfor %}
+      </div>
+      <a class="carousel-prev1" href="#" onclick="changeSlide(-1)" style="z-index: 999;">&laquo;</a>
+      <a class="carousel-next1" href="#" onclick="changeSlide(1)" style="z-index: 999;">&raquo;</a>
+    </div>
+
+
+    <button type="button" id="mybutton1">
+      收藏报告
+    </button>
+
+
+
+    <button type="button" id="button2">
+      返回首页
+    </button>
+
+
+
+    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="mybutton">
+      获取报告
+    </button>
+
+    <button type="button" id="downloadCarouselButton">
+      下载图片
+    </button>
+
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog wider-modal">
+        <div class="modal-content">
+          <div class="modal-header" style="background-image: url(../static/chat_img/panel2.png);height: 12%;background-size: 100% 100%;">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">报告</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <!-- 报告框在此修改 -->
+          <div class="modal-body" style="height: 73%; overflow-y: auto;">
+          {{ report }}
+        </div>
+
+          <div class="modal-footer" style="background-image: url(../static/chat_img/panel.png);height: 15%;background-size: 100% 100%;">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">关闭</button>
+            <button type="button" class="btn btn-primary" onclick="downloadReport()" id="download">下载报告</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+  <div id="div1">
+    <div class="form-floating mb-3" id="biaoti">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" oninput="changeTextColor(this)"">
+      <label for="floatingInput" style="font-size: 18px;">标题</label>
+    </div>
+    <div class="form-floating" id="beizhu">
+      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"  oninput="changeTextColor(this)"></textarea>
+      <label for="floatingTextarea2" style="font-size: 18px;">备注</label>
+    </div>
+
+    <button id="sure">确认</button>
+    <button id="cancle" style="color: #cdeb09;">取消</button>
+  </div>
+ 
+
+
+
+  <script>
+
+
+
+document.getElementById("mybutton1").addEventListener("click", function() {
+  var div1 = document.getElementById('div1');
+  if (div1.style.display === "none") {
+    div1.style.display = "block";
+  } else {
+    div1.style.display = "none";
+  }
+});
+
+document.getElementById("button2").addEventListener("click", function() {
+  window.location.href = "/backstage/"
+});
+
+document.getElementById("cancle").addEventListener("click", function() {
+  var div1 = document.getElementById('div1');
+  if (div1.style.display === "block") {
+    div1.style.display = "none";
+  } else {
+    div1.style.display = "block";
+  }
+});
+
+document.getElementById("sure").addEventListener("click", function() {
+   var header = document.getElementById('floatingInput').value;
+  var note = document.getElementById('floatingTextarea2').value;
+  var image_list = Array.from(document.getElementsByClassName('carousel-item1')).map(function(item) {
+    return item.querySelector('img').getAttribute('src');
+  });
+
+  // 修改提取 report 变量的方式，以匹配你的HTML结构
+  var report = document.querySelector('#exampleModal .modal-body').textContent.trim()
+  console.log(image_list);
+  console.log(report);
+  if(header === ""){
+    alert("请输入标题")
+  }
+  else if(note === ""){
+    alert("请添加备注")
+  }
+  else{
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function (){
+        if(xhr.readyState === 4 && xhr.status === 200){
+            json_data = xhr.responseText;
+            js_data = JSON.parse(json_data);
+            
+        }
+    }
+    xhr.open('post',"/result/",true);
+    xhr.setRequestHeader('Content-Type',"application/json");
+    var data = {"header":header,"note":note,"report":report,"img":image_list};
+    // js对象转换为 json传输
+    xhr.send(JSON.stringify(data));
+
+    div1.style.display = "none";
+    alert("添加成功")
+  }
+});
+  </script>
+
+  <script>
+  function downloadReport() {
+    var reportText = document.querySelector('.modal-dialog-scrollable').innerText;
+    var blob = new Blob([reportText], { type: 'text/plain' });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = 'report.txt';
+    link.click();
+  }
+  </script>
+
+  <script>
+    document.getElementById("downloadCarouselButton").addEventListener("click", function() {
+  var imageElements = document.querySelectorAll('#carousel1 .carousel-inner1 .carousel-item1 img');
+  var imageURLs = [];
+
+  for (var i = 0; i < imageElements.length; i++) {
+    var imageURL = imageElements[i].getAttribute('src');
+    imageURLs.push(imageURL);
+  }
+
+  // 调用下载函数，传递图片URL数组进行下载操作
+  downloadImages(imageURLs);
+});
+
+function downloadImages(imageURLs) {
+  // 遍历图片URL数组，依次下载图片
+  for (var i = 0; i < imageURLs.length; i++) {
+    var downloadLink = document.createElement("a");
+    downloadLink.href = imageURLs[i];
+    downloadLink.download = "image_" + i + ".jpg"; // 指定下载时的文件名
+    downloadLink.click();
+  }
+}
+
+  </script>
+
+  <script>
+    const carouselInner = document.querySelector('.carousel-inner1');
+    const carouselItems = Array.from(carouselInner.children);
+    const numItems = carouselItems.length;
+    const itemWidth = carouselItems[0].clientWidth;
+    let currentIndex = 0;
+
+    function changeSlide(direction) {
+      currentIndex = (currentIndex + direction + numItems) % numItems;
+      const offset = -1 * currentIndex * itemWidth;
+      carouselInner.style.transform = `translateX(${offset}px)`;
+    }
+  </script>
+</body>
+</html>

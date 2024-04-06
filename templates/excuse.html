@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title></title>
+    <style>
+
+.image-container {
+        position: relative;
+        width: 400px;
+        /* 图片容器的宽度 */
+        height: 400px;
+        /* 图片容器的高度 */
+        background-color: #ccc;
+        /* 图片容器的背景色 */
+        display: inline-block;
+        margin-right: 50px;
+      }
+
+      .dot {
+        position: absolute;
+        /* 设置为绝对定位，相对于最近的已定位祖先 */
+        width: 10px;
+        /* 亮点的宽度 */
+        height: 10px;
+        /* 亮点的高度 */
+        background-color: red;
+        /* 亮点的颜色 */
+        border-radius: 50%;
+        /* 使亮点为圆形 */
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .container {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        background-image: url("C:/Users/Luxky之吻/PycharmProjects/Hospital/static/media/chen.jpg");
+        background-size: cover;
+        background-position: center;
+        display: inline-block;
+        margin-right: 50px;
+      }
+
+      .rectangle {
+        position: absolute;
+        border: 2px solid #3498db;
+        background-color: rgba(52, 152, 219, 0.1);
+        display: inline-block;
+        cursor: move;
+        /* 鼠标样式设为可移动指针 */
+      }
+
+      .flag {
+        display: inline-block;
+      }
+      label {
+        margin-right: 10px;
+      }
+    </style>
+</head>
+
+<body>
+    <!-- 头部模块 -->
+    <div class="header">
+        <ul class="left">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="title">
+            <span><h1>明日方舟医疗</h1></span>
+        </div>
+        <ul class="right">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <!-- 主体模块 -->
+    <div class="main">
+        <!-- 左侧模块 -->
+        <div class="main-left">
+            <!-- 完成率 -->
+            <div class="completion">
+                <div class="completion-content">
+                    <div class="rate">
+                        <h5><span>待定</span></h5>
+                    </div>
+                </div>
+            </div>
+            <!-- 闪电 -->
+            <div class="lightning">
+                <div class="lightning1">
+                    <div class="sd1"></div>
+                    <div class="jd1">
+                        <ul class="cd">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <div class="box1"></div>
+                        <div class="box2"></div>
+                    </div>
+                </div>
+                <div class="lightning2">
+                    <div class="sd2"></div>
+                    <div class="jd2">
+                        <ul class="cd">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <div class="box1"></div>
+                        <div class="box2"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- top3 -->
+            <div class="top3">
+                <ul>
+                    <li>
+                        <div class="title">NO.1</div>
+                        <div class="content">
+                            <p>80%</p>
+                            <span>待定</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="title">NO.2</div>
+                        <div class="content">
+                            <p>80%</p>
+                            <span>待定</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="title">NO.3</div>
+                        <div class="content">
+                            <p>80%</p>
+                            <span>待定</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 中间模块 -->
+        <div>
+            <div style="background-color: white;">
+              <label for="customRange1" class="form-label">X-Y view</label>
+              <input
+                type="range"
+                class="form-range"
+                id="customRange1"
+                min="0"
+                max="32"
+                step="1"
+                value="50"
+              />
+              <label for="customRange1" class="form-label">X-Z view</label>
+              <input
+                type="range"
+                class="form-range"
+                id="customRange2"
+                min="0"
+                max="256"
+                step="1"
+                value="50"
+              />
+        
+              <p id="sliderValue">当前值: 50</p>
+              <p id="sliderValue1">当前值: 50</p>
+            </div>
+            <div>
+              <div>
+                <input
+                  type="radio"
+                  name="options"
+                  id="option1"
+                  class="radio-button"
+                  checked
+                />
+                <label for="option1" style="color: white;" >dot</label>
+        
+                <input type="radio" name="options" id="option2" class="radio-button" />
+                <label for="option2" style="color: white;">box</label>
+              </div>
+              <div id="dot">
+                <div class="image-container" id="image-container">
+                  <img
+                    src="C:\Users\Luxky之吻\PycharmProjects\Hospital\static\media\chen.jpg"
+                    alt="Your Image"
+                    id="main-image"
+                    style="width: 100%; height: 100%"
+                  />
+                </div>
+                <div class="image-container" id="image-container1">
+                  <img
+                    src="C:\Users\Luxky之吻\PycharmProjects\Hospital\static\media\chen.jpg"
+                    alt="Your Image"
+                    id="main-image1"
+                    style="width: 100%; height: 100%"
+                  />
+                </div>
+              </div>
+        
+              <div id="box" style="display: none">
+                <div class="container" id="container">
+                  <div class="rectangle" id="rectangle">
+                    <img
+                      src="C:\Users\Luxky之吻\PycharmProjects\Hospital\static\media\chen.jpg"
+                      alt="Your Image"
+                      id="main-image"
+                      style="width: 150px; height: 150px; opacity: 0"
+                    />
+                  </div>
+                </div>
+                <div class="container" id="container1">
+                  <div class="rectangle" id="rectangle1" style="height: 400px">
+                    <img
+                      src="C:\Users\Luxky之吻\PycharmProjects\Hospital\static\media\chen.jpg"
+                      alt="Your Image"
+                      id="main-image"
+                      style="width: 150px; height: 400px; opacity: 0"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+	</div>
+        </div>
+        <!-- 右侧模块 -->
+        <div class="main-right">
+            <!-- 开通VIP -->
+            <div class="compare">
+                <div class="compare-content">
+                    <div class="rate2">
+                        <h5><span>开通VIP</span></h5>
+                    </div>
+                </div>
+            </div>
+            <!-- 闪电 -->
+            <div class="lightning">
+                <div class="lightning3">
+                    <div class="jd3">
+                        <ul class="cd">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <div class="box1"></div>
+                        <div class="box2"></div>
+                    </div>
+                    <div class="sd3"></div>
+                </div>
+                <div class="lightning4">
+                    <div class="jd4">
+                        <ul class="cd">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <div class="box1"></div>
+                        <div class="box2"></div>
+                    </div>
+                    <div class="sd4"></div>
+                </div>
+            </div>
+            <!-- top6 -->
+            <div class="top6">
+                <ul>
+                    <li>
+                        <div class="title">NO.4</div>
+                        <div class="content">
+                            <p>80%</p>
+                            <span>待定</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="title">NO.5</div>
+                        <div class="content">
+                            <p>80%</p>
+                            <span>待定</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="title">NO.6</div>
+                        <div class="content">
+                            <p>80%</p>
+                            <span>待定</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 底部模块 -->
+    <div class="bottom">
+        <div class="ul-box">
+            <ul>
+                <li>
+                    <div class="li-content">
+                        <p><a href="/user_information">个人主页</a></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="li-content">
+                        <p><a href="">网站首页</a></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="li-content">
+                        <p><a href="">网站论坛</a></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script src="../static/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
+<script src="../static/js/main.js"></script>
+<script>
+    // 获取滑块元素
+    var rangeSlider = document.getElementById("customRange1");
+
+    // 获取显示值的元素
+    var sliderValueElement = document.getElementById("sliderValue");
+
+    // 初始显示滑块的值
+    sliderValueElement.innerHTML = "当前值: " + rangeSlider.value;
+
+    // 监听滑块值的变化
+    rangeSlider.addEventListener("input", function () {
+      // 更新显示的值
+      sliderValueElement.innerHTML = "当前值: " + rangeSlider.value;
+    });
+  </script>
+  <script>
+    // 获取滑块元素
+    var rangeSlider1 = document.getElementById("customRange2");
+
+    // 获取显示值的元素
+    var sliderValueElement1 = document.getElementById("sliderValue1");
+
+    // 初始显示滑块的值
+    sliderValueElement1.innerHTML = "当前值: " + rangeSlider1.value;
+
+    // 监听滑块值的变化
+    rangeSlider1.addEventListener("input", function () {
+      // 更新显示的值
+      sliderValueElement1.innerHTML = "当前值: " + rangeSlider1.value;
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var option1 = document.getElementById("option1");
+      var option2 = document.getElementById("option2");
+      var dot = document.getElementById("dot");
+      var box = document.getElementById("box");
+
+      option1.addEventListener("click", function () {
+        if (this.checked) {
+          dot.style.display = "block";
+          box.style.display = "none";
+        }
+      });
+
+      option2.addEventListener("click", function () {
+        if (this.checked) {
+          dot.style.display = "none";
+          box.style.display = "block";
+        }
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var imageContainer = document.getElementById("image-container");
+      var imageContainer1 = document.getElementById("image-container1");
+      imageContainer.addEventListener("click", function (event) {
+        var x = event.clientX - imageContainer.getBoundingClientRect().left;
+        var y = event.clientY - imageContainer.getBoundingClientRect().top;
+        var dot = document.createElement("div");
+        dot.classList.add("dot");
+        dot.style.left = x + "px";
+        dot.style.top = y + "px";
+        imageContainer.appendChild(dot);
+        var rect = imageContainer1.getBoundingClientRect();
+        var x1 = rect.left + x - 512;
+        var y1 = rect.top + y - 8;
+        var dot1 = document.createElement("div");
+        dot1.classList.add("dot");
+        dot1.style.left = x1 + "px";
+        dot1.style.top = y1 + "px";
+        imageContainer1.appendChild(dot1);
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const rectangle = document.getElementById("rectangle");
+      const rectangle1 = document.getElementById("rectangle1");
+      let isResizing = false; // 是否在改变大小的标志
+      let isDragging = false; // 是否在拖动的标志
+      let startX, startY, startWidth, startHeight; // 初始位置和大小
+      let startX1, startY1, startWidth1, startHeight1; // 初始位置和大小
+      rectangle.addEventListener("mousedown", initResize); // 添加鼠标按下事件监听器
+      rectangle.addEventListener("mousemove", drag); // 添加鼠标移动事件监听器
+      rectangle.addEventListener("wheel", handleWheel); // 添加鼠标滚轴事件监听器
+      // 初始化改变大小
+      function initResize(e) {
+        e.preventDefault();
+        isResizing = true; // 开始改变大小
+        isDragging = true; // 开始拖动
+        startX = e.clientX; // 获取鼠标按下时的X坐标
+        startY = e.clientY; // 获取鼠标按下时的Y坐标
+        startWidth = parseInt(
+          document.defaultView.getComputedStyle(rectangle).width,
+          10
+        ); // 获取矩形框当前的宽度
+        startHeight = parseInt(
+          document.defaultView.getComputedStyle(rectangle).height,
+          10
+        ); // 获取矩形框当前的高度
+      }
+      // 拖动
+      function drag(e) {
+        if (isDragging) {
+          const deltaX = e.clientX - startX; // 计算X方向上的移动距离
+          const deltaY = e.clientY - startY; // 计算Y方向上的移动距离
+          const rectX = rectangle.offsetLeft + deltaX; // 计算新的X坐标
+          const rectY = rectangle.offsetTop + deltaY; // 计算新的Y坐标
+
+          const rectX1 = rectangle1.offsetLeft + deltaX; // 计算新的X坐标
+          const rectY1 = rectangle1.offsetTop + deltaY; // 计算新的Y坐标
+
+          // 更新矩形位置
+          rectangle.style.left = rectX + "px"; // 设置矩形框的新X坐标
+          rectangle.style.top = rectY + "px"; // 设置矩形框的新Y坐标
+          rectangle1.style.left = rectX1 + "px"; // 设置矩形框的新X坐标
+          rectangle1.style.top = 0 + "px"; // 设置矩形框的新Y坐标
+
+          const width = startWidth; // 计算新的宽度
+          const height = startHeight; // 计算新的高度
+          rectangle.style.width = width + "px"; // 设置矩形框的新宽度
+          rectangle.style.height = height + "px"; // 设置矩形框的新高度
+          rectangle1.style.width = width + "px"; // 设置矩形框的新宽度
+          rectangle1.style.height = 400 + "px"; // 设置矩形框的新高度
+
+          startX = e.clientX; // 更新起始X坐标
+          startY = e.clientY; // 更新起始Y坐标
+        }
+      }
+
+      // 鼠标松开事件监听器
+      document.addEventListener("mouseup", function () {
+        isDragging = false; // 停止拖动
+        document.removeEventListener("mousemove", drag); // 移除改变大小的事件监听器
+      });
+      // 鼠标滚轴事件处理
+      function handleWheel(event) {
+        event.preventDefault(); // 阻止默认滚动行为
+        const delta = Math.max(
+          -1,
+          Math.min(1, event.wheelDelta || -event.detail)
+        ); // 获取滚轴滚动方向
+        startWidth = parseInt(rectangle.style.width) || rectangle.offsetWidth; // 获取当前矩形的宽度
+        startHeight =
+          parseInt(rectangle.style.height) || rectangle.offsetHeight; // 获取当前矩形的高度
+        const step = 10; // 每次滚动的大小
+        if (delta > 0) {
+          // 向上滚动，增加大小
+          startWidth += step;
+          startHeight += step;
+          startWidth1 += step;
+        } else {
+          // 向下滚动，减小大小
+          startWidth = Math.max(step, startWidth - step);
+          startWidth1 = Math.max(step, startWidth - step);
+          startHeight = Math.max(step, startHeight - step);
+        }
+        rectangle.style.width = startWidth + "px"; // 设置新的宽度
+        rectangle.style.height = startHeight + "px"; // 设置新的高度
+        rectangle1.style.width = startWidth1 + "px"; // 设置新的宽度
+      }
+    });
+  </script>
+</html>

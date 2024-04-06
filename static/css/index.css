@@ -1,0 +1,13 @@
+body{
+	background-image: url(../img/backgroundimg00.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% auto; 
+}
+.selfintroduce_box {
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 9%;
+	background: #00000060;
+	color: #ffffff;
+	border: 1px solid black;
+}

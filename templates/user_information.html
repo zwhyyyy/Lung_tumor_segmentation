@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../static/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="../static/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js" rel="stylesheet" type="text/css">
+</head>
+
+<style>
+
+#div1{
+    position:absolute;
+    height:100%;
+    width:100%;
+    left:0;
+    top:0;   
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  background: url(../static/user_img/bg2.jpg) no-repeat center;
+  background-size: 100%;
+}
+
+#biaoti{
+    position: absolute;
+    width: 25%;
+    height: 40%;
+    left:35%;
+    top:-8%;
+}
+
+#xinxi{
+    position: absolute;
+    font-size:40px;
+    color: rgb(238, 240, 242);
+    left:43%;
+    top:8%;
+}
+
+#big{
+    position: absolute;
+    width: 50%;
+    height: 33%;
+    left:26%;
+    top:70%;
+}
+
+.jzxz2{
+    position: absolute;
+    width: 8%;
+    height: 15%;
+}
+
+.word{
+    position: absolute;
+    font-size:25px;
+    color: rgb(238, 240, 242);
+}
+
+
+#name{
+    position: absolute;
+    width:20%;
+    height:7%;
+    left:20%;
+    top:20%;
+    background-image:url(../static/user_img/titBg.png);
+    background-size: cover;
+}
+    
+#name1{
+    position: absolute;
+    left: 2%;
+    top:10%;
+    width: 94%;
+    height: 80%;
+    background-color: transparent;
+    border: none;
+    color: rgb(95, 174, 243);
+    font-size: 20px;
+}
+
+#gender{
+    position: absolute;
+    width:20%;
+    height:7%;
+    left:20%;
+    top:35%;
+    background-image:url(../static/user_img/titBg.png);
+    background-size: cover;
+}
+    
+#gender1{
+    position: absolute;
+    left: 2%;
+    top:10%;
+    width: 94%;
+    height: 80%;
+    background-color: transparent;
+    border: none;
+    color: rgb(95, 174, 243);
+    font-size: 20px;
+}
+
+#birthday{
+    position: absolute;
+    width:20%;
+    height:7%;
+    left:20%;
+    top:50%;
+    background-image:url(../static/user_img/titBg.png);
+    background-size: cover;
+}
+    
+#birthday1{
+    position: absolute;
+    left: 2%;
+    top:10%;
+    width: 94%;
+    height: 80%;
+    background-color: transparent;
+    border: none;
+    color: rgb(95, 174, 243);
+    font-size: 20px;
+}
+
+#ID{
+    position: absolute;
+    width:20%;
+    height:7%;
+    left:20%;
+    top:65%;
+    background-image:url(../static/user_img/titBg.png);
+    background-size: cover;
+}
+    
+#ID1{
+    position: absolute;
+    left: 2%;
+    top:10%;
+    width: 94%;
+    height: 80%;
+    background-color: transparent;
+    border: none;
+    color: rgb(95, 174, 243);
+    font-size: 18px;
+}
+
+#phone{
+    position: absolute;
+    width:20%;
+    height:7%;
+    left:70%;
+    top:20%;
+    background-image:url(../static/user_img/titBg.png);
+    background-size: cover;
+}
+    
+#phone1{
+    position: absolute;
+    left: 2%;
+    top:10%;
+    width: 94%;
+    height: 80%;
+    background-color: transparent;
+    border: none;
+    color: rgb(95, 174, 243);
+    font-size: 20px;
+}
+
+#email{
+    position: absolute;
+    width:20%;
+    height:7%;
+    left:70%;
+    top:35%;
+    background-image:url(../static/user_img/titBg.png);
+    background-size: cover;
+}
+    
+#email1{
+    position: absolute;
+    left: 2%;
+    top:10%;
+    width: 94%;
+    height: 80%;
+    background-color: transparent;
+    border: none;
+    color: rgb(95, 174, 243);
+    font-size: 20px;
+}
+
+#address{
+    position: absolute;
+    width:20%;
+    height:7%;
+    left:70%;
+    top:50%;
+    background-image:url(../static/user_img/titBg.png);
+    background-size: cover;
+}
+    
+#address1{
+    position: absolute;
+    left: 2%;
+    top:10%;
+    width: 94%;
+    height: 80%;
+    background-color: transparent;
+    border: none;
+    color: rgb(95, 174, 243);
+    font-size: 15px;
+}
+
+#password{
+    position: absolute;
+    width:20%;
+    height:7%;
+    left:70%;
+    top:65%;
+    background-image:url(../static/user_img/titBg.png);
+    background-size: cover;
+}
+    
+#password1{
+    position: absolute;
+    left: 2%;
+    top:10%;
+    width: 94%;
+    height: 80%;
+    background-color: transparent;
+    border: none;
+    color: rgb(95, 174, 243);
+    font-size: 20px;
+}
+
+#bianji{
+    position: absolute;
+    font-size:25px;
+    left:16.5%;
+    top:82%;
+    cursor: pointer;
+}
+
+#xiugai{
+    position: absolute;
+    font-size:25px;
+    left:78.5%;
+    top:82%;
+    cursor: pointer;
+}
+
+.bot{
+    position: absolute;
+    width:12%;
+    height:17%;
+    top:80%;
+}
+
+#exit{
+    position: absolute;
+    font-size:30px;
+    left:48.5%;
+    top:82%;
+    cursor: pointer;
+}
+
+#bianji{
+    cursor: pointer;
+}
+
+p {
+      font-family: 'FangSong';
+      color: rgb(23, 234, 69);
+      text-shadow: 0 0 10px rgb(15, 56, 220),
+        0 0 20px rgba(7, 231, 235, 0.769),
+        0 0 30px rgba(7, 231, 235, 0.769),
+        0 0 50px rgba(7, 231, 235, 0.769);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+
+    a {
+      font-family: 'FangSong';
+      color: rgb(23, 234, 69);
+      text-shadow: 0 0 10px rgb(15, 56, 220),
+        0 0 20px rgba(7, 231, 235, 0.769),
+        0 0 30px rgba(7, 231, 235, 0.769),
+        0 0 50px rgba(7, 231, 235, 0.769);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    a:hover{
+        color: red;
+    }
+
+</style>
+
+<body>
+    <div id="div1">
+    <img src="../static/user_img/biaoti.png" alt="biaoti" id="biaoti" >
+    <p id="xinxi">个人信息</p>
+
+    <img src="../static/user_img/big.png" alt="big" id="big" >
+
+    <img src="../static/user_img/jzxz2.png" alt="jzxz2" class="jzxz2" style="left:4%;top:16%;">
+    <img src="../static/user_img/jzxz2.png" alt="jzxz2" class="jzxz2" style="left:4%;top:31%;">
+    <img src="../static/user_img/jzxz2.png" alt="jzxz2" class="jzxz2" style="left:4%;top:46%;">
+    <img src="../static/user_img/jzxz2.png" alt="jzxz2" class="jzxz2" style="left:4%;top:61%;">
+    <img src="../static/user_img/jzxz2.png" alt="jzxz2" class="jzxz2" style="left:55%;top:16%;">
+    <img src="../static/user_img/jzxz2.png" alt="jzxz2" class="jzxz2" style="left:55%;top:31%;">
+    <img src="../static/user_img/jzxz2.png" alt="jzxz2" class="jzxz2" style="left:55%;top:46%;">
+    <img src="../static/user_img/jzxz2.png" alt="jzxz2" class="jzxz2" style="left:55%;top:61%;">
+
+    <p class="word" style="left:11%;top:22%;">姓名：</p>
+    <p class="word" style="left:11%;top:37%;">性别：</p>
+    <p class="word" style="left:11%;top:52%;">出生日期：</p>
+    <p class="word" style="left:11%;top:67%;">星座：</p>
+    <p class="word" style="left:62%;top:22%;">电话号码：</p>
+    <p class="word" style="left:62%;top:37%;">邮箱：</p>
+    <p class="word" style="left:62%;top:52%;">居住地：</p>
+    <p class="word" style="left:62%;top:67%;">职业：</p>
+
+    <img src="../static/user_img/bot.png" alt="bot" class="bot" style="left:14%;">
+    <img src="../static/user_img/bot.png" alt="bot" class="bot" style="left:76%;">
+
+    <a href="#" id="bianji" onclick="button1()">确认修改</a>
+    <a href="/forget/" id="xiugai" >修改密码</a>
+    <a href="/backstage/" id="exit" >退出</a>
+    </div>
+    <div id="name">
+        <input type="text" name="name" id="name1">
+    </div>
+    <div id="gender">
+        <input type="text" name="name" id="gender1">
+    </div>
+    <div id="birthday">
+        <input type="text" name="birthday"  id="birthday1">
+    </div>
+    <div id="ID">
+        <input type="text" name="ID" id="ID1">
+    </div>
+    <div id="phone">
+        <input type="text" name="phone" id="phone1">
+    </div>
+    <div id="email">
+        <input type="text" name="email" id="email1" readonly>
+    </div>
+    <div id="address">
+        <input type="text" name="address" id="address1">
+    </div>
+    <div id="password">
+        <input type="text" name="password" id="password1">
+    </div>
+
+<script>
+function button1() {
+  // 获取输入框中的值
+  var name = document.getElementById("name1").value;
+  var gender = document.getElementById("gender1").value;
+  var birthday = document.getElementById("birthday1").value;
+  var ID = document.getElementById("ID1").value;
+  var phone = document.getElementById("phone1").value;
+  var email = document.getElementById("email1").value;
+  var address = document.getElementById("address1").value;
+  var password = document.getElementById("password1").value
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/user_info/", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        alert("修改成功")
+      } else {
+        alert("修改成功")
+      }
+    }
+  };
+  var data = {
+    name: name,
+    gender: gender,
+    birthday: birthday,
+    ID: ID,
+    phone: phone,
+    email: email,
+    address: address,
+    password: password
+  };
+  var jsonData = JSON.stringify(data);
+  xhr.send(jsonData);
+}
+
+</script>
+
+    <script>
+
+    // 假设从后端传来的默认值为 "123456"
+    var name = "{{ name }}";
+    var gender = "{{ gender }}";
+    var password = "{{ password }}";
+    var address = "{{ address }}";
+    var email = "{{ email }}";
+    var ID = "{{ ID }}";
+    var phone = "{{ phone }}";
+    var birthday = "{{ birthday }}";
+
+    // 获取输入框元素
+    var nameInput = document.getElementById("name1");
+    var genderInput = document.getElementById("gender1");
+    var passwordInput = document.getElementById("password1");
+    var addressInput = document.getElementById("address1");
+    var emailInput = document.getElementById("email1");
+    var phoneInput = document.getElementById("phone1");
+    var IDInput = document.getElementById("ID1");
+    var birthdayInput = document.getElementById("birthday1");
+
+    // 将后端的数据设置为输入框的 value 属性
+    nameInput.value = name;
+    genderInput.value = gender;
+    passwordInput.value = password;
+    addressInput.value = address;
+    emailInput.value = email;
+    phoneInput.value = phone;
+    IDInput.value = ID;
+    birthdayInput.value = birthday;
+
+
+    </script>
+
+
+</body>
+</html> 

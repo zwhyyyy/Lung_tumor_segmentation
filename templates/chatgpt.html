@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="../static/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+  <script src="../static/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../static/css/reset.css" />
+    <link rel="stylesheet" href="../static/css/main.css" />
+    <script type="text/javascript" src="../static/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.mousewheel.js"></script>
+    <title>问诊机器人</title>
+    <style>
+
+
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+#a1{
+  position: absolute;
+  left: 10%;
+  top:10%;
+}
+
+#question{
+  position: absolute;
+  left: 90%;
+  top:10%;
+  margin-left: 20px;  /* 仅应用于常见问题链接 */
+}
+
+.input_txt::placeholder {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* 新增的关闭按钮样式 */
+/* 叉状图标关闭按钮样式 */
+.close-btn {
+    background-color: transparent;
+    color: #555;
+    border: none;
+    font-size: 180%;
+    cursor: pointer;
+    float: right;
+    margin-top: -5px;
+}
+
+.close-btn:hover {
+    color: #e41f1f;
+}
+
+
+
+
+.header {
+    /* 你的其他样式 */
+    /* 以下是一个示例： */
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.main {
+    /* 你的其他样式 */
+    /* 以下是一个示例： */
+    padding: 10px;
+}
+
+.footer {
+    /* 你的其他样式 */
+    /* 以下是一个示例： */
+    background-color: #f3f3f3;
+    padding: 10px;
+    width: 95%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+span{ 
+            font-family: 'FangSong';
+            color: rgb(255, 255, 255);
+            text-shadow: 0 0 10px rgb(15, 56, 220),
+            0 0 20px rgba(0, 174, 255, 0.769),
+            0 0 30px rgba(0, 174, 255, 0.769),
+            0 0 50px rgba(0, 174, 255, 0.769);
+        }
+
+        #a1 {
+      position: absolute;
+      left: 2%;
+      top: 2%;
+      width: 10%;
+      height: 8%;
+      z-index: 9;
+    }
+    a {
+      font-family: 'FangSong';
+      color: rgb(23, 234, 69);
+      text-shadow: 0 0 10px rgb(15, 56, 220),
+        0 0 20px rgba(7, 231, 235, 0.769),
+        0 0 30px rgba(7, 231, 235, 0.769),
+        0 0 50px rgba(7, 231, 235, 0.769);
+      text-decoration: none;
+      font-size: 42px;
+      white-space: nowrap;
+    }
+
+    a:hover {
+  color: rgb(255, 0, 0); /* 鼠标悬停时的颜色变化 */
+}
+
+button {
+      z-index: 1;
+      font-size: 20px;
+      color: white;
+      background: #40a9ff;
+      outline: none;
+      border: none;
+      padding: 0.5em 1em;
+    }
+
+    button:hover {
+      cursor: pointer;
+      animation: jelly 0.5s;
+    }
+
+    @keyframes jelly {
+
+      0%,
+      100% {
+        transform: scale(1, 1);
+      }
+
+      25%,
+      75% {
+        transform: scale(0.9, 1.1);
+      }
+
+      50% {
+        transform: scale(1.1, 0.9);
+      }
+    }
+
+button {
+      position: relative;
+      z-index: 1;
+      border: none;
+      outline: none;
+      width: 100%;
+      height: 6.6%;
+      left: 1.4%;
+      margin-bottom: 0.2%;
+      padding: 0.5em 1em;
+      color: white;
+      background-image: url(../static/chat_img/titBg.png);
+      background-size: 100% 100%;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    button::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      border: 3px solid #1890ff;
+      transform: scale(1);
+      transform-origin: center;
+    }
+
+    button:hover::before {
+      transition: all 0.75s ease-out;
+      border: 1px solid#e6f7ff;
+      transform: scale(1.25);
+      opacity: 0;
+    }
+
+    .button_group{
+      position: absolute;
+      left: 0;
+      top: 19%;
+      width: 19.4%;
+      height: 80%;
+      z-index: 99;
+    }
+
+    #ipt {
+    font-family: Arial, sans-serif; /* 使用 Arial 字体 */
+    font-size: 24px; /* 字体大小为 16 像素 */
+    color: #333; /* 字体颜色为深灰色 */
+    border: 1px solid #ccc; /* 边框为灰色 */
+    padding: 10px; /* 内边距为 10px */
+    width: 100%; /* 宽度占满父容器 */
+    box-sizing: border-box; /* 盒模型为边框盒模型 */
+    resize: vertical; /* 垂直方向可调整大小 */
+  }
+
+  /* 输入后的字体样式 */
+  #ipt:focus {
+    outline: none; /* 聚焦时去除默认边框样式 */
+    border-color: dodgerblue; /* 边框颜色为深蓝色 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+  }
+
+  #a2{
+    position: absolute;
+      left: 8%;
+      top: 11%;
+      width: 10%;
+      height: 8%;
+      z-index: 9;
+      font-size: 42px;
+      white-space: nowrap;
+  }
+
+#btnSend{
+  left: 82%;
+  top: 63%;
+  width: 15%;
+  height: 30%;
+}
+
+    </style>
+</head>
+
+<body>
+
+  <img src="../static/chat_img/panel.png" alt="" style="position: absolute;top: 0;left: 0;width: 20%;height: 100%;z-index: 8;">
+  <img src="../static/chat_img/3.png" alt="" style="position: absolute;top: 0;left: 0;width: 20%;height: 20%;z-index: 9;">
+
+
+  <a href="/backstage/" id="a1">返回</a>
+
+  <span id="a2">常见问题</span>
+
+  <div class="button_group">
+
+    <button >我得的是什么类型的肿瘤</button>
+    <button >我的肿瘤到什么时期了</button>
+    <button >我的存活率还有多少</button>
+    <button >我需要进行基因检测吗</button>
+    <button >有什么治疗方法</button>
+    <button >肿瘤对我的生活有什么影响呢</button>
+    <button >我该怎样管理我的生活</button>
+    <button >我该怎么减轻我的痛苦</button>
+    <button >有什么副作用呢，我该如何减轻</button>
+    <button >肿瘤对我的生活有什么影响呢</button>
+    <button >我该怎样管理我的生活</button>
+    <button >我该怎么减轻我的痛苦</button>
+    <button >有什么副作用呢，我该如何减轻</button>
+    <button >我该怎样管理我的生活</button>
+    <button >我该怎么减轻我的痛苦</button>
+
+
+
+  </div>
+
+  <div class="wrap">
+    <!-- 头部 Header 区域 -->
+    <img src="../static/chat_img/panel.png" alt="" style="position: absolute;top: 75%;left: 0;width: 100%;height: 25%;z-index: 0;">
+    <!-- 中间 聊天内容区域 -->
+    <div class="main" style="background-image: url(../static/chat_img/2.png);background-size: 99% 100%;">
+        <ul class="talk_list" style="top: 0;" id="talk_list">
+            <li class="left_word">
+                
+            </li>
+            <!-- <li class="right_word">
+        <img src="img/person02.png" /> <span>你好哦</span>
+      </li> -->
+        </ul>
+        <div class="drag_bar" style="display: none;">
+            <div class="drager ui-draggable ui-draggable-handle" style="display: none; height: 412.628px;"></div>
+        </div>
+    </div>
+    <!-- 底部 消息编辑区域 -->
+    
+    <div class="footer" style="background-image: url(../static/chat_img/panel2.png);background-size: 99% 100%;" >
+      <div class="input_wrapper"  >
+          <textarea class="form-control" placeholder="说点什么吧..." id="ipt"></textarea>
+          <!-- <input type="button" value="发 送" class="input_sub" id="btnSend" />   -->
+          <button class="input_sub" id="btnSend">发送</button>
+      </div>
+  </div>
+</div>
+
+<span id="helpText" style="position: absolute;left: 37%;top: 30%;font-size: 60px;">What can I help you today?</span>
+
+
+<script>
+  // 获取按钮组元素
+  var buttonGroup = document.querySelector('.button_group');
+  
+  // 获取消息框文本域元素
+  var messageTextarea = document.getElementById('ipt');
+  
+  // 给按钮组中的每个按钮添加点击事件监听器
+  buttonGroup.addEventListener('click', function(event) {
+    // 检查被点击的元素是否是按钮
+    if (event.target.tagName === 'BUTTON') {
+      // 将按钮的文本内容添加到消息框中
+      messageTextarea.value = event.target.textContent;
+    }
+  });
+</script>
+
+
+
+    <script type="text/javascript" src="../static/js/scroll.js"></script>
+
+
+    <script>
+
+        document.getElementById("btnSend").addEventListener("click", function() {
+
+          const helpText = document.getElementById('helpText');
+
+            helpText.style.display = 'none'; // 隐藏帮助文本
+          
+
+          let value = document.getElementById("ipt").value.trim();
+          if (value === "") {
+            alert("请输入问诊信息");
+            return;
+        }
+          document.getElementById("ipt").value = "";
+          let my = `<li class='right_word'><img src="../static/img/my01.jpg" /> <span>${value}</span></li>`;
+          document.getElementById("talk_list").insertAdjacentHTML("beforeend", my);
+          resetui();
+          txt(value);
+        });      
+        function txt(value) {
+          let xhr = new XMLHttpRequest();
+          xhr.open('POST', "/chatgpt/", true);
+          xhr.setRequestHeader('Content-Type', "application/json");
+          var data = {"value": value};
+          xhr.send(JSON.stringify(data));
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              let backData = JSON.parse(xhr.responseText);
+              console.log(backData);
+              let res = `<li class="left_word">
+                <img src="../static/img/friend02.jpg" /><span>${backData.data.info.text}</span></li>`;
+              document.getElementById("talk_list").insertAdjacentHTML("beforeend", res);
+              resetui();
+            }
+          };
+          xhr.send();
+        }      
+             
+        document.getElementById("ipt").addEventListener("keydown", function(e) {
+          if (e.keyCode !== 13) {
+            return;
+          }
+          document.getElementById("btnSend").click();
+        });
+      
+        </script>
+
+</body>
+
+</html>
